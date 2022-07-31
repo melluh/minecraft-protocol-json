@@ -1,0 +1,288 @@
+{
+    "version": {
+        "protocol": 759,
+        "release": "1.19"
+    },
+    "packets": {
+        "handshaking": [
+            {
+                "id": "0x00",
+                "name": "ClientIntentionPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "protocolVersion",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "hostName",
+                        "type": "string"
+                    },
+                    {
+                        "name": "port",
+                        "type": "ushort"
+                    },
+                    {
+                        "name": "intention",
+                        "type": "varint",
+                        "notes": "1 for status, 2 for login"
+                    }
+                ]
+            }
+        ],
+        "status": [
+            {
+                "id": "0x00",
+                "name": "ServerboundStatusRequestPacket",
+                "to": "server",
+                "fields": []
+            },
+            {
+                "id": "0x01",
+                "name": "ServerboundPingRequestPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "time",
+                        "type": "long"
+                    }
+                ]
+            },
+            {
+                "id": "0x00",
+                "name": "ClientboundStatusResponsePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "status",
+                        "type": "string"
+                    }
+                ]
+            },
+            {
+                "id": "0x01",
+                "name": "ClientboundPongResponsePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "time",
+                        "type": "long"
+                    }
+                ]
+            }
+        ],
+        "login": [
+            {
+                "id": "0x00",
+                "name": "ServerboundHelloPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "hasSignature",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "hasKey",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "expiresAt",
+                        "type": "long",
+                        "if": {
+                            "field": "hasKey",
+                            "equals": "true"
+                        }
+                    },
+                    {
+                        "name": "key",
+                        "type": "byte_array",
+                        "if": {
+                            "field": "hasKey",
+                            "equals": "true"
+                        }
+                    },
+                    {
+                        "name": "keySignature",
+                        "type": "byte_array",
+                        "if": {
+                            "field": "hasKey",
+                            "equals": "true"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "0x01",
+                "name": "ServerboundKeyPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "key",
+                        "type": "byte_array",
+                        "notes": "Also referred to as the shared secret."
+                    },
+                    {
+                        "name": "hasSaltSignaturePair",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "nonce",
+                        "type": "byte_array",
+                        "notes": "Also referred to as the verify token.",
+                        "if": {
+                            "field": "hasSaltSignaturePair",
+                            "equals": false
+                        }
+                    },
+                    {
+                        "name": "salt",
+                        "type": "long",
+                        "if": {
+                            "field": "hasSaltSignaturePair",
+                            "equals": true
+                        }
+                    },
+                    {
+                        "name": "signature",
+                        "type": "byte_array",
+                        "if": {
+                            "field": "hasSaltSignaturePair",
+                            "equals": true
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "0x02",
+                "name": "ServerboundCustomQueryPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "transactionId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "hasData",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "data",
+                        "type": "byte_array_no_length",
+                        "if": {
+                            "field": "hasData",
+                            "equals": true
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "0x00",
+                "name": "ClientboundLoginDisconnectPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "reason",
+                        "type": "string"
+                    }
+                ]
+            },
+            {
+                "id": "0x01",
+                "name": "ClientboundHelloPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "serverId",
+                        "type": "string"
+                    },
+                    {
+                        "name": "publicKey",
+                        "type": "byte_array"
+                    },
+                    {
+                        "name": "nonce",
+                        "type": "byte_array"
+                    }
+                ]
+            },
+            {
+                "id": "0x02",
+                "name": "ClientboundGameProfilePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "uuid",
+                        "type": "uuid"
+                    },
+                    {
+                        "name": "name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "properties",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "type": "string"
+                            },
+                            {
+                                "name": "value",
+                                "type": "string"
+                            },
+                            {
+                                "name": "hasSignature",
+                                "type": "boolean"
+                            },
+                            {
+                                "name": "signature",
+                                "type": "string",
+                                "if": {
+                                    "field": "hasSignature",
+                                    "equals": true
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "0x03",
+                "name": "ClientboundLoginCompressionPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "compressionThreshold",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "id": "0x04",
+                "name": "ClientboundCustomQueryPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "transactionId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "identifier",
+                        "type": "string"
+                    },
+                    {
+                        "name": "data",
+                        "type": "byte_array_no_length"
+                    }
+                ]
+            }
+        ],
+        "play": [
+            
+        ]
+    }
+}
