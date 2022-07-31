@@ -1,5 +1,5 @@
 # minecraft-protocol-json
-Minecraft packets described in JSON.
+The Minecraft protocol in JSON format.
 
 ## Versions
 | Protocol ID | Release | File                          | Status                     |

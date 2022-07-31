@@ -20,7 +20,7 @@
                     },
                     {
                         "name": "port",
-                        "type": "ushort"
+                        "type": "short"
                     },
                     {
                         "name": "intention",
@@ -282,7 +282,1039 @@
             }
         ],
         "play": [
-            
+            {
+                "id": "0x00",
+                "name": "ServerboundAcceptTeleportationPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "id",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "id": "0x01",
+                "name": "ServerboundBlockEntityTagQuery",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "transactionId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "position",
+                        "type": "blockpos"
+                    }
+                ]
+            },
+            {
+                "id": "0x02",
+                "name": "ServerboundChangeDifficultyPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "difficulty",
+                        "type": "byte"
+                    }
+                ]
+            },
+            {
+                "id": "0x03",
+                "name": "ServerboundChatCommandPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "command",
+                        "type": "string"
+                    },
+                    {
+                        "name": "timestamp",
+                        "type": "long"
+                    },
+                    {
+                        "name": "salt",
+                        "type": "long"
+                    },
+                    {
+                        "name": "argumentSignatures",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "type": "string"
+                            },
+                            {
+                                "name": "signature",
+                                "type": "byte_array"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "signedPreview",
+                        "type": "boolean"
+                    }
+                ]
+            },
+            {
+                "id": "0x04",
+                "name": "ServerboundChatPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "message",
+                        "type": "string"
+                    },
+                    {
+                        "name": "timestamp",
+                        "type": "long"
+                    },
+                    {
+                        "name": "salt",
+                        "type": "long"
+                    },
+                    {
+                        "name": "signature",
+                        "type": "byte_array"
+                    },
+                    {
+                        "name": "signedPreview",
+                        "type": "boolean"
+                    }
+                ]
+            },
+            {
+                "id": "0x05",
+                "name": "ServerboundChatPreviewPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "queryId",
+                        "type": "int"
+                    },
+                    {
+                        "name": "query",
+                        "type": "string"
+                    }
+                ]
+            },
+            {
+                "id": "0x06",
+                "name": "ServerboundClientCommandPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "action",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "id": "0x07",
+                "name": "ServerboundClientInformationPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "language",
+                        "type": "string"
+                    },
+                    {
+                        "name": "viewDistance",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "chatVisibility",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "chatColors",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "modelCustomisation",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "mainHand",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "textFilteringEnabled",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "allowsListing",
+                        "type": "boolean"
+                    }
+                ]
+            },
+            {
+                "id": "0x08",
+                "name": "ServerboundCommandSuggestionPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "id",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "command",
+                        "type": "string"
+                    }
+                ]
+            },
+            {
+                "id": "0x09",
+                "name": "ServerboundContainerButtonClickPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "containerId",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "buttonId",
+                        "type": "byte"
+                    }
+                ]
+            },
+            {
+                "id": "0x0A",
+                "name": "ServerboundContainerClickPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "containerId",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "stateId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "slotNum",
+                        "type": "short"
+                    },
+                    {
+                        "name": "buttonNum",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "clickType",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "changedSlots",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "slot",
+                                "type": "short"
+                            },
+                            {
+                                "name": "itemStack",
+                                "type": "item"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "carriedItem",
+                        "type": "item"
+                    }
+                ]
+            },
+            {
+                "id": "0x0B",
+                "name": "ServerboundContainerClosePacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "containerId",
+                        "type": "byte"
+                    }
+                ]
+            },
+            {
+                "id": "0x0C",
+                "name": "ServerboundCustomPayloadPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "identifier",
+                        "type": "string"
+                    },
+                    {
+                        "name": "data",
+                        "type": "byte_array_no_length"
+                    }
+                ]
+            },
+            {
+                "id": "0x0D",
+                "name": "ServerboundEditBookPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "slot",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "pages",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "page",
+                                "type": "string"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "hasTitle",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "title",
+                        "type": "string",
+                        "if": {
+                            "field": "hasTitle",
+                            "equals": true
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "0x0E",
+                "name": "ServerboundEntityTagQuery",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "transactionId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "entityId",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "id": "0x0F",
+                "name": "ServerboundInteractPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "entityId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "action",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "targetX",
+                        "type": "float",
+                        "if": {
+                            "field": "action",
+                            "equals": 2
+                        }
+                    },
+                    {
+                        "name": "targetY",
+                        "type": "float",
+                        "if": {
+                            "field": "action",
+                            "equals": 2
+                        }
+                    },
+                    {
+                        "name": "targetZ",
+                        "type": "float",
+                        "if": {
+                            "field": "action",
+                            "equals": 2
+                        }
+                    },
+                    {
+                        "name": "hand",
+                        "type": "varint",
+                        "if": {
+                            "field": "action",
+                            "equals": [0, 2]
+                        }
+                    },
+                    {
+                        "name": "usingSecondaryAction",
+                        "type": "boolean",
+                        "notes": "This is set to true when the player is sneaking."
+                    }
+                ]
+            },
+            {
+                "id": "0x10",
+                "name": "ServerboundJigsawGeneratePacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "position",
+                        "type": "blockpos"
+                    },
+                    {
+                        "name": "levels",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "keepJigsaws",
+                        "type": "boolean"
+                    }
+                ]
+            },
+            {
+                "id": "0x11",
+                "name": "ServerboundKeepAlivePacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "id",
+                        "type": "long"
+                    }
+                ]
+            },
+            {
+                "id": "0x12",
+                "name": "ServerboundLockDifficultyPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "locked",
+                        "type": "boolean"
+                    }
+                ]
+            },
+            {
+                "id": "0x13",
+                "name": "ServerboundMovePlayerPacket.Pos",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "x",
+                        "type": "double"
+                    },
+                    {
+                        "name": "y",
+                        "type": "double"
+                    },
+                    {
+                        "name": "z",
+                        "type": "double"
+                    },
+                    {
+                        "name": "onGround",
+                        "type": "byte"
+                    }
+                ]
+            },
+            {
+                "id": "0x14",
+                "name": "ServerboundMovePlayerPacket.PosRot",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "x",
+                        "type": "double"
+                    },
+                    {
+                        "name": "y",
+                        "type": "double"
+                    },
+                    {
+                        "name": "z",
+                        "type": "double"
+                    },
+                    {
+                        "name": "yRot",
+                        "type": "float"
+                    },
+                    {
+                        "name": "xRot",
+                        "type": "float"
+                    },
+                    {
+                        "name": "onGround",
+                        "type": "byte"
+                    }
+                ]
+            },
+            {
+                "id": "0x15",
+                "name": "ServerboundMovePlayerPacket.Rot",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "yRot",
+                        "type": "float"
+                    },
+                    {
+                        "name": "xRot",
+                        "type": "float"
+                    },
+                    {
+                        "name": "onGround",
+                        "type": "byte"
+                    }
+                ]
+            },
+            {
+                "id": "0x16",
+                "name": "ServerboundMovePlayerPacket.StatusOnly",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "onGround",
+                        "type": "byte"
+                    }
+                ]
+            },
+            {
+                "id": "0x17",
+                "name": "ServerboundMoveVehiclePacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "x",
+                        "type": "double"
+                    },
+                    {
+                        "name": "y",
+                        "type": "double"
+                    },
+                    {
+                        "name": "z",
+                        "type": "double"
+                    },
+                    {
+                        "name": "yRot",
+                        "type": "float"
+                    },
+                    {
+                        "name": "xRot",
+                        "type": "float"
+                    }
+                ]
+            },
+            {
+                "id": "0x18",
+                "name": "ServerboundPaddleBoatPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "left",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "right",
+                        "type": "boolean"
+                    }
+                ]
+            },
+            {
+                "id": "0x19",
+                "name": "ServerboundPickItemPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "slot",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "id": "0x1A",
+                "name": "ServerboundPlaceRecipePacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "containerId",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "recipe",
+                        "type": "string"
+                    },
+                    {
+                        "name": "shiftDown",
+                        "type": "boolean"
+                    }
+                ]
+            },
+            {
+                "id": "0x1B",
+                "name": "ServerboundPlayerAbilitiesPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "flags",
+                        "type": "byte"
+                    }
+                ]
+            },
+            {
+                "id": "0x1C",
+                "name": "ServerboundPlayerActionPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "action",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "position",
+                        "type": "blockpos"
+                    },
+                    {
+                        "name": "direction",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "sequence",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "id": "0x1D",
+                "name": "ServerboundPlayerCommandPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "id",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "action",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "data",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "id": "0x1E",
+                "name": "ServerboundPlayerInputPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "xxa",
+                        "type": "float"
+                    },
+                    {
+                        "name": "zza",
+                        "type": "float"
+                    },
+                    {
+                        "name": "flags",
+                        "type": "byte"
+                    }
+                ]
+            },
+            {
+                "id": "0x1F",
+                "name": "ServerboundPongPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "id",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "id": "0x20",
+                "name": "ServerboundRecipeBookChangeSettingsPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "bookType",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "isOpen",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "isFiltering",
+                        "type": "boolean"
+                    }
+                ]
+            },
+            {
+                "id": "0x21",
+                "name": "ServerboundRecipeBookSeenRecipePacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "recipe",
+                        "type": "string"
+                    }
+                ]
+            },
+            {
+                "id": "0x22",
+                "name": "ServerboundRenameItemPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "name",
+                        "type": "string"
+                    }
+                ]
+            },
+            {
+                "id": "0x23",
+                "name": "ServerboundResourcePackPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "action",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "id": "0x24",
+                "name": "ServerboundSeenAdvancementsPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "action",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "tab",
+                        "type": "string",
+                        "if": {
+                            "field": "action",
+                            "equals": 0
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "0x25",
+                "name": "ServerboundSelectTradePacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "item",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "id": "0x26",
+                "name": "ServerboundSetBeaconPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "hasPrimary",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "primary",
+                        "type": "varint",
+                        "if": {
+                            "field": "hasPrimary",
+                            "equals": true
+                        }
+                    },
+                    {
+                        "name": "hasSecondary",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "secondary",
+                        "type": "varint",
+                        "if": {
+                            "field": "hasSecondary",
+                            "equals": true
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "0x27",
+                "name": "ServerboundSetCarriedItemPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "slot",
+                        "type": "short"
+                    }
+                ]
+            },
+            {
+                "id": "0x28",
+                "name": "ServerboundSetCommandBlockPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "position",
+                        "type": "blockpos"
+                    },
+                    {
+                        "name": "command",
+                        "type": "string"
+                    },
+                    {
+                        "name": "mode",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "flags",
+                        "type": "byte"
+                    }
+                ]
+            },
+            {
+                "id": "0x29",
+                "name": "ServerboundSetCommandMinecartPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "entityId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "command",
+                        "type": "string"
+                    },
+                    {
+                        "name": "trackOutput",
+                        "type": "boolean"
+                    }
+                ]
+            },
+            {
+                "id": "0x2A",
+                "name": "ServerboundSetCreativeModeSlotPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "slot",
+                        "type": "short"
+                    },
+                    {
+                        "name": "itemStack",
+                        "type": "item"
+                    }
+                ]
+            },
+            {
+                "id": "0x2B",
+                "name": "ServerboundSetJigsawBlockPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "position",
+                        "type": "blockpos"
+                    },
+                    {
+                        "name": "name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "target",
+                        "type": "string"
+                    },
+                    {
+                        "name": "pool",
+                        "type": "string"
+                    },
+                    {
+                        "name": "finalState",
+                        "type": "string"
+                    },
+                    {
+                        "name": "joint",
+                        "type": "string"
+                    }
+                ]
+            },
+            {
+                "id": "0x2C",
+                "name": "ServerboundSetStructureBlockPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "position",
+                        "type": "blockpos"
+                    },
+                    {
+                        "name": "updateType",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "mode",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "offsetX",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "offsetY",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "offsetZ",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "sizeX",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "sizeY",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "sizeZ",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "mirror",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "rotation",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "data",
+                        "type": "string"
+                    },
+                    {
+                        "name": "integrity",
+                        "type": "float"
+                    },
+                    {
+                        "name": "seed",
+                        "type": "varlong"
+                    },
+                    {
+                        "name": "flags",
+                        "type": "byte"
+                    }
+                ]
+            },
+            {
+                "id": "0x2D",
+                "name": "ServerboundSignUpdatePacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "position",
+                        "type": "blockpos"
+                    },
+                    {
+                        "name": "line1",
+                        "type": "string"
+                    },
+                    {
+                        "name": "line2",
+                        "type": "string"
+                    },
+                    {
+                        "name": "line3",
+                        "type": "string"
+                    },
+                    {
+                        "name": "line4",
+                        "type": "string"
+                    }
+                ]
+            },
+            {
+                "id": "0x2E",
+                "name": "ServerboundSwingPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "hand",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "id": "0x2F",
+                "name": "ServerboundTeleportToEntityPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "uuid",
+                        "type": "uuid"
+                    }
+                ]
+            },
+            {
+                "id": "0x30",
+                "name": "ServerboundUseItemOnPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "hand",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "position",
+                        "type": "blockpos"
+                    },
+                    {
+                        "name": "direction",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "cursorX",
+                        "type": "float"
+                    },
+                    {
+                        "name": "cursorY",
+                        "type": "float"
+                    },
+                    {
+                        "name": "cursorZ",
+                        "type": "float"
+                    },
+                    {
+                        "name": "insideBlock",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "sequence",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "id": "0x31",
+                "name": "ServerboundUseItemPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "hand",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "sequence",
+                        "type": "varint"
+                    }
+                ]
+            }
         ]
     }
 }
