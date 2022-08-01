@@ -3775,7 +3775,7 @@
                         "type": "varint",
                         "if": {
                             "field": "flags",
-                            "byte_mask": "0x01"
+                            "bitmask": "0x01"
                         }
                     },
                     {
@@ -3783,7 +3783,7 @@
                         "type": "string",
                         "if": {
                             "field": "flags",
-                            "byte_mask": "0x02"
+                            "bitmask": "0x02"
                         }
                     }
                 ]
@@ -3965,7 +3965,7 @@
                                 "type": "string",
                                 "if": {
                                     "field": "flags",
-                                    "byte_mask": "0x01"
+                                    "bitmask": "0x01"
                                 }
                             },
                             {
