@@ -171,7 +171,7 @@
                     },
                     {
                         "name": "data",
-                        "type": "byte_array_no_length",
+                        "type": "bytes",
                         "if": {
                             "field": "hasData",
                             "equals": true
@@ -276,7 +276,7 @@
                     },
                     {
                         "name": "data",
-                        "type": "byte_array_no_length"
+                        "type": "bytes"
                     }
                 ]
             }
@@ -545,7 +545,7 @@
                     },
                     {
                         "name": "data",
-                        "type": "byte_array_no_length"
+                        "type": "bytes"
                     }
                 ]
             },
@@ -1312,6 +1312,2880 @@
                     {
                         "name": "sequence",
                         "type": "varint"
+                    }
+                ]
+            },
+            {
+                "id": "0x00",
+                "name": "ClientboundAddEntityPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "id",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "uuid",
+                        "type": "uuid"
+                    },
+                    {
+                        "name": "type",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "x",
+                        "type": "double"
+                    },
+                    {
+                        "name": "y",
+                        "type": "double"
+                    },
+                    {
+                        "name": "z",
+                        "type": "double"
+                    },
+                    {
+                        "name": "xRot",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "yRot",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "yHeadRot",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "data",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "xa",
+                        "type": "short"
+                    },
+                    {
+                        "name": "ya",
+                        "type": "short"
+                    },
+                    {
+                        "name": "za",
+                        "type": "short"
+                    }
+                ]
+            },
+            {
+                "id": "0x01",
+                "name": "ClientboundAddExperienceOrbPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "id",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "x",
+                        "type": "double"
+                    },
+                    {
+                        "name": "y",
+                        "type": "double"
+                    },
+                    {
+                        "name": "z",
+                        "type": "double"
+                    },
+                    {
+                        "name": "value",
+                        "type": "short"
+                    }
+                ]
+            },
+            {
+                "id": "0x02",
+                "name": "ClientboundAddPlayerPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "entityId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "playerId",
+                        "type": "uuid"
+                    },
+                    {
+                        "name": "x",
+                        "type": "double"
+                    },
+                    {
+                        "name": "y",
+                        "type": "double"
+                    },
+                    {
+                        "name": "z",
+                        "type": "double"
+                    },
+                    {
+                        "name": "xRot",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "yRot",
+                        "type": "byte"
+                    }
+                ]
+            },
+            {
+                "id": "0x03",
+                "name": "ClientboundAnimatePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "entityId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "action",
+                        "type": "ubyte"
+                    }
+                ]
+            },
+            {
+                "id": "0x04",
+                "name": "ClientboundAwardStatsPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "stats",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "category",
+                                "type": "varint"
+                            },
+                            {
+                                "name": "statistic",
+                                "type": "varint"
+                            },
+                            {
+                                "name": "value",
+                                "type": "varint"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "0x05",
+                "name": "ClientboundBlockChangedAckPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "sequence",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "id": "0x06",
+                "name": "ClientboundBlockDestructionPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "id",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "position",
+                        "type": "blockpos"
+                    },
+                    {
+                        "name": "progress",
+                        "type": "byte"
+                    }
+                ]
+            },
+            {
+                "id": "0x07",
+                "name": "ClientboundBlockEntityDataPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "position",
+                        "type": "blockpos"
+                    },
+                    {
+                        "name": "type",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "tag",
+                        "type": "nbt"
+                    }
+                ]
+            },
+            {
+                "id": "0x08",
+                "name": "ClientboundBlockEventPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "position",
+                        "type": "blockpos"
+                    },
+                    {
+                        "name": "actionId",
+                        "type": "ubyte"
+                    },
+                    {
+                        "name": "actionParameter",
+                        "type": "ubyte"
+                    },
+                    {
+                        "name": "blockId",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "id": "0x09",
+                "name": "ClientboundBlockUpdatePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "position",
+                        "type": "blockpos"
+                    },
+                    {
+                        "name": "blockStateId",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "id": "0x0A",
+                "name": "ClientboundBossEventPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "uuid",
+                        "type": "uuid"
+                    },
+                    {
+                        "name": "action",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "name",
+                        "type": "string",
+                        "if": {
+                            "field": "action",
+                            "equals": [0, 3]
+                        }
+                    },
+                    {
+                        "name": "progress",
+                        "type": "float",
+                        "if": {
+                            "field": "action",
+                            "equals": [0, 2]
+                        }
+                    },
+                    {
+                        "name": "color",
+                        "type": "varint",
+                        "if": {
+                            "field": "action",
+                            "equals": [0, 4]
+                        }
+                    },
+                    {
+                        "name": "overlay",
+                        "type": "varint",
+                        "if": {
+                            "field": "action",
+                            "equals": [0, 4]
+                        }
+                    },
+                    {
+                        "name": "flags",
+                        "type": "byte",
+                        "if": {
+                            "field": "action",
+                            "equals": [0, 5]
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "0x0B",
+                "name": "ClientboundChangeDifficultyPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "difficulty",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "locked",
+                        "type": "boolean"
+                    }
+                ]
+            },
+            {
+                "id": "0x0C",
+                "name": "ClientboundChatPreviewPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "queryId",
+                        "type": "int"
+                    },
+                    {
+                        "name": "hasPreview",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "preview",
+                        "type": "string",
+                        "if": {
+                            "field": "hasPreview",
+                            "equals": true
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "0x0D",
+                "name": "ClientboundClearTitlesPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "resetTimes",
+                        "type": "boolean"
+                    }
+                ]
+            },
+            {
+                "id": "0x0E",
+                "name": "ClientboundCommandSuggestionsPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "id",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "rangeStart",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "rangeEnd",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "suggestions",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "text",
+                                "type": "string"
+                            },
+                            {
+                                "name": "hasTooltip",
+                                "type": "boolean"
+                            },
+                            {
+                                "name": "tooltip",
+                                "type": "string",
+                                "if": {
+                                    "field": "hasTooltip",
+                                    "equals": true
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "0x0F",
+                "name": "ClientboundCommandsPacket",
+                "to": "client",
+                "fields": [],
+                "notes": "todo"
+            },
+            {
+                "id": "0x10",
+                "name": "ClientboundContainerClosePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "containerId",
+                        "type": "byte"
+                    }
+                ]
+            },
+            {
+                "id": "0x11",
+                "name": "ClientboundContainerSetContentPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "containerId",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "stateId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "items",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "itemStack",
+                                "type": "item"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "carriedItem",
+                        "type": "item"
+                    }
+                ]
+            },
+            {
+                "id": "0x12",
+                "name": "ClientboundContainerSetDataPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "containerId",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "id",
+                        "type": "short"
+                    },
+                    {
+                        "name": "value",
+                        "type": "short"
+                    }
+                ]
+            },
+            {
+                "id": "0x13",
+                "name": "ClientboundContainerSetSlotPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "containerId",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "stateId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "slot",
+                        "type": "short"
+                    },
+                    {
+                        "name": "itemStack",
+                        "type": "item"
+                    }
+                ]
+            },
+            {
+                "id": "0x14",
+                "name": "ClientboundCooldownPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "item",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "duration",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "id": "0x15",
+                "name": "ClientboundCustomPayloadPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "identifier",
+                        "type": "string"
+                    },
+                    {
+                        "name": "data",
+                        "type": "bytes"
+                    }
+                ]
+            },
+            {
+                "id": "0x16",
+                "name": "ClientboundCustomSoundPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "source",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "x",
+                        "type": "int"
+                    },
+                    {
+                        "name": "y",
+                        "type": "int"
+                    },
+                    {
+                        "name": "z",
+                        "type": "int"
+                    },
+                    {
+                        "name": "volume",
+                        "type": "float"
+                    },
+                    {
+                        "name": "pitch",
+                        "type": "float"
+                    },
+                    {
+                        "name": "seed",
+                        "type": "long"
+                    }
+                ]
+            },
+            {
+                "id": "0x17",
+                "name": "ClientboundDisconnectPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "reason",
+                        "type": "string"
+                    }
+                ]
+            },
+            {
+                "id": "0x18",
+                "name": "ClientboundEntityEventPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "entityId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "eventId",
+                        "type": "byte"
+                    }
+                ]
+            },
+            {
+                "id": "0x19",
+                "name": "ClientboundExplodePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "x",
+                        "type": "float"
+                    },
+                    {
+                        "name": "y",
+                        "type": "float"
+                    },
+                    {
+                        "name": "z",
+                        "type": "float"
+                    },
+                    {
+                        "name": "power",
+                        "type": "float"
+                    },
+                    {
+                        "name": "toBlow",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "dX",
+                                "type": "byte"
+                            },
+                            {
+                                "name": "dY",
+                                "type": "byte"
+                            },
+                            {
+                                "name": "dZ",
+                                "type": "byte"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "knockbackX",
+                        "type": "float"
+                    },
+                    {
+                        "name": "knockbackY",
+                        "type": "float"
+                    },
+                    {
+                        "name": "knockbackZ",
+                        "type": "float"
+                    }
+                ]
+            },
+            {
+                "id": "0x1A",
+                "name": "ClientboundForgetLevelChunkPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "x",
+                        "type": "int"
+                    },
+                    {
+                        "name": "z",
+                        "type": "int"
+                    }
+                ]
+            },
+            {
+                "id": "0x1B",
+                "name": "ClientboundGameEventPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "eventId",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "param",
+                        "type": "float"
+                    }
+                ]
+            },
+            {
+                "id": "0x1C",
+                "name": "ClientboundHorseScreenOpenPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "containerId",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "size",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "entityId",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "id": "0x1D",
+                "name": "ClientboundInitializeBorderPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "newCenterX",
+                        "type": "double"
+                    },
+                    {
+                        "name": "newCenterY",
+                        "type": "double"
+                    },
+                    {
+                        "name": "newCenterZ",
+                        "type": "double"
+                    },
+                    {
+                        "name": "oldSize",
+                        "type": "double"
+                    },
+                    {
+                        "name": "newSize",
+                        "type": "double"
+                    },
+                    {
+                        "name": "lerpTime",
+                        "type": "varlong"
+                    },
+                    {
+                        "name": "newAbsoluteMaxSize",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "warningBlocks",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "warningTime",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "id": "0x1E",
+                "name": "ClientboundKeepAlivePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "id",
+                        "type": "long"
+                    }
+                ]
+            },
+            {
+                "id": "0x1F",
+                "name": "ClientboundLevelChunkWithLightPacket",
+                "to": "client",
+                "fields": [],
+                "notes": "todo"
+            },
+            {
+                "id": "0x20",
+                "name": "ClientboundLevelEventPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "type",
+                        "type": "int"
+                    },
+                    {
+                        "name": "position",
+                        "type": "blockpos"
+                    },
+                    {
+                        "name": "data",
+                        "type": "int"
+                    },
+                    {
+                        "name": "globalEvent",
+                        "type": "boolean"
+                    }
+                ]
+            },
+            {
+                "id": "0x21",
+                "name": "ClientboundLevelParticlesPacket",
+                "to": "client",
+                "notes": "todo",
+                "fields_todo": [
+                    {
+                        "name": "id",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "overrideLimiter",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "x",
+                        "type": "double"
+                    },
+                    {
+                        "name": "y",
+                        "type": "double"
+                    },
+                    {
+                        "name": "z",
+                        "type": "double"
+                    },
+                    {
+                        "name": "xDist",
+                        "type": "float"
+                    },
+                    {
+                        "name": "yDist",
+                        "type": "float"
+                    },
+                    {
+                        "name": "zDist",
+                        "type": "float"
+                    },
+                    {
+                        "name": "maxSpeed",
+                        "type": "float"
+                    },
+                    {
+                        "name": "count",
+                        "type": "int"
+                    },
+                    {
+                        "name": "todo"
+                    }
+                ]
+            },
+            {
+                "id": "0x22",
+                "name": "ClientboundLightUpdatePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "x",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "y",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "lightData",
+                        "type": "light",
+                        "notes": "todo"
+                    }
+                ]
+            },
+            {
+                "id": "0x23",
+                "name": "ClientboundLoginPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "playerId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "hardcore",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "gameType",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "previousGameType",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "levels",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "level",
+                                "type": "string"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "registryCodec",
+                        "type": "nbt"
+                    },
+                    {
+                        "name": "dimensionType",
+                        "type": "string"
+                    },
+                    {
+                        "name": "dimension",
+                        "type": "string"
+                    },
+                    {
+                        "name": "seed",
+                        "type": "long"
+                    },
+                    {
+                        "name": "maxPlayers",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "chunkRadius",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "simulationDistance",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "reducedDebugInfo",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "showDeathScreen",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "isDebug",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "isFlat",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "hasLastDeathLocation",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "lastDeathLocationDimension",
+                        "type": "string",
+                        "if": {
+                            "field": "hasLastDeathLocation",
+                            "equals": true
+                        }
+                    },
+                    {
+                        "name": "lastDeathLocation",
+                        "type": "blockpos",
+                        "if": {
+                            "field": "hasLastDeathLocation",
+                            "equals": true
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "0x24",
+                "name": "ClientboundMapItemDataPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "mapId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "scale",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "locked",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "hasDecorations",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "decorations",
+                        "type": "collection",
+                        "if": {
+                            "field": "hasDecorations",
+                            "equals": true
+                        },
+                        "fields": [
+                            {
+                                "name": "type",
+                                "type": "varint"
+                            },
+                            {
+                                "name": "x",
+                                "type": "byte"
+                            },
+                            {
+                                "name": "z",
+                                "type": "byte"
+                            },
+                            {
+                                "name": "direction",
+                                "type": "byte"
+                            },
+                            {
+                                "name": "hasDisplayName",
+                                "type": "boolean"
+                            },
+                            {
+                                "name": "displayName",
+                                "type": "string",
+                                "if": {
+                                    "field": "hasDisplayName",
+                                    "equals": true
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "name": "columns",
+                        "type": "ubyte"
+                    },
+                    {
+                        "name": "rows",
+                        "type": "ubyte",
+                        "if": {
+                            "field": "columns",
+                            "not_equal": 0
+                        }
+                    },
+                    {
+                        "name": "x",
+                        "type": "byte",
+                        "if": {
+                            "field": "columns",
+                            "not_equal": 0
+                        }
+                    },
+                    {
+                        "name": "z",
+                        "type": "byte",
+                        "if": {
+                            "field": "columns",
+                            "not_equal": 0
+                        }
+                    },
+                    {
+                        "name": "length",
+                        "type": "varint",
+                        "if": {
+                            "field": "columns",
+                            "not_equal": 0
+                        }
+                    },
+                    {
+                        "name": "data",
+                        "type": "unsigned_byte_array",
+                        "if": {
+                            "field": "columns",
+                            "not_equal": 0
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "0x25",
+                "name": "ClientboundMerchantOffersPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "containerId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "offers",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "baseCostA",
+                                "type": "item"
+                            },
+                            {
+                                "name": "result",
+                                "type": "item"
+                            },
+                            {
+                                "name": "costB",
+                                "type": "item"
+                            },
+                            {
+                                "name": "isOutOfStock",
+                                "type": "boolean"
+                            },
+                            {
+                                "name": "uses",
+                                "type": "int"
+                            },
+                            {
+                                "name": "maxUses",
+                                "type": "int"
+                            },
+                            {
+                                "name": "xp",
+                                "type": "int"
+                            },
+                            {
+                                "name": "specialPriceDiff",
+                                "type": "int"
+                            },
+                            {
+                                "name": "priceMultiplier",
+                                "type": "float"
+                            },
+                            {
+                                "name": "demand",
+                                "type": "int"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "villagerLevel",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "villagerXp",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "showProgress",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "canRestock",
+                        "type": "boolean"
+                    }
+                ]
+            },
+            {
+                "id": "0x26",
+                "name": "ClientboundMoveEntityPacket.Pos",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "entityId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "dX",
+                        "type": "short"
+                    },
+                    {
+                        "name": "dY",
+                        "type": "short"
+                    },
+                    {
+                        "name": "dZ",
+                        "type": "short"
+                    },
+                    {
+                        "name": "onGround",
+                        "type": "boolean"
+                    }
+                ]
+            },
+            {
+                "id": "0x27",
+                "name": "ClientboundMoveEntityPacket.PosRot",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "entityId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "dX",
+                        "type": "short"
+                    },
+                    {
+                        "name": "dY",
+                        "type": "short"
+                    },
+                    {
+                        "name": "dZ",
+                        "type": "short"
+                    },
+                    {
+                        "name": "yRot",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "xRot",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "onGround",
+                        "type": "boolean"
+                    }
+                ]
+            },
+            {
+                "id": "0x28",
+                "name": "ClientboundMoveEntityPacket.Rot",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "entityId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "yRot",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "xRot",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "onGround",
+                        "type": "boolean"
+                    }
+                ]
+            },
+            {
+                "id": "0x29",
+                "name": "ClientboundMoveVehiclePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "x",
+                        "type": "double"
+                    },
+                    {
+                        "name": "y",
+                        "type": "double"
+                    },
+                    {
+                        "name": "z",
+                        "type": "double"
+                    },
+                    {
+                        "name": "yRot",
+                        "type": "float"
+                    },
+                    {
+                        "name": "xRot",
+                        "type": "float"
+                    }
+                ]
+            },
+            {
+                "id": "0x2A",
+                "name": "ClientboundOpenBookPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "hand",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "id": "0x2B",
+                "name": "ClientboundOpenScreenPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "containerId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "type",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "title",
+                        "type": "string"
+                    }
+                ]
+            },
+            {
+                "id": "0x2C",
+                "name": "ClientboundOpenSignEditorPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "position",
+                        "type": "blockpos"
+                    }
+                ]
+            },
+            {
+                "id": "0x2D",
+                "name": "ClientboundPingPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "id",
+                        "type": "int"
+                    }
+                ]
+            },
+            {
+                "id": "0x2E",
+                "name": "ClientboundPlaceGhostRecipePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "containerId",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "recipe",
+                        "type": "string"
+                    }
+                ]
+            },
+            {
+                "id": "0x2F",
+                "name": "ClientboundPlayerAbilitiesPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "flags",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "flyingSpeed",
+                        "type": "float"
+                    },
+                    {
+                        "name": "walkingSpeed",
+                        "type": "float"
+                    }
+                ]
+            },
+            {
+                "id": "0x30",
+                "name": "ClientboundPlayerChatPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "signedContent",
+                        "type": "string"
+                    },
+                    {
+                        "name": "hasUnsignedContent",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "unsignedContent",
+                        "type": "string",
+                        "if": {
+                            "field": "hasUnsignedContent",
+                            "equals": true
+                        }
+                    },
+                    {
+                        "name": "typeId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "uuid",
+                        "type": "uuid"
+                    },
+                    {
+                        "name": "name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "hasTeamName",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "teamName",
+                        "type": "string",
+                        "if": {
+                            "field": "hasTeamName",
+                            "equals": true
+                        }
+                    },
+                    {
+                        "name": "timestamp",
+                        "type": "long"
+                    },
+                    {
+                        "name": "salt",
+                        "type": "long"
+                    },
+                    {
+                        "name": "signature",
+                        "type": "byte_array"
+                    }
+                ]
+            },
+            {
+                "id": "0x31",
+                "name": "ClientboundPlayerCombatEndPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "duration",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "killerId",
+                        "type": "int"
+                    }
+                ]
+            },
+            {
+                "id": "0x32",
+                "name": "ClientboundPlayerCombatEnterPacket",
+                "to": "client",
+                "fields": []
+            },
+            {
+                "id": "0x33",
+                "name": "ClientboundPlayerCombatKillPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "playerId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "killerId",
+                        "type": "int"
+                    },
+                    {
+                        "name": "message",
+                        "type": "string"
+                    }
+                ]
+            },
+            {
+                "id": "0x34",
+                "name": "ClientboundPlayerInfoPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "action",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "entries",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "uuid",
+                                "type": "uuid"
+                            },
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "if": {
+                                    "field": "../action",
+                                    "equals": 0
+                                }
+                            },
+                            {
+                                "name": "properties",
+                                "type": "collection",
+                                "if": {
+                                    "field": "../action",
+                                    "equals": 0
+                                },
+                                "fields": [
+                                    {
+                                        "name": "name",
+                                        "type": "string"
+                                    },
+                                    {
+                                        "name": "value",
+                                        "type": "string"
+                                    },
+                                    {
+                                        "name": "isSigned",
+                                        "type": "boolean"
+                                    },
+                                    {
+                                        "name": "signature",
+                                        "type": "string",
+                                        "if": {
+                                            "field": "isSigned",
+                                            "equals": true
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "gamemode",
+                                "type": "varint",
+                                "if": {
+                                    "field": "../action",
+                                    "equals": [0, 1]
+                                }
+                            },
+                            {
+                                "name": "ping",
+                                "type": "varint",
+                                "if": {
+                                    "field": "../action",
+                                    "equals": [0, 2]
+                                }
+                            },
+                            {
+                                "name": "hasDisplayName",
+                                "type": "boolean",
+                                "if": {
+                                    "field": "../action",
+                                    "equals": [0, 3]
+                                }
+                            },
+                            {
+                                "name": "displayName",
+                                "type": "string",
+                                "if": {
+                                    "field": "hasDisplayName",
+                                    "equals": true
+                                }
+                            },
+                            {
+                                "name": "hasSignature",
+                                "type": "boolean",
+                                "if": {
+                                    "field": "../action",
+                                    "equals": 0
+                                }
+                            },
+                            {
+                                "name": "timestamp",
+                                "type": "long",
+                                "if": {
+                                    "field": "hasSignature",
+                                    "equals": true
+                                }
+                            },
+                            {
+                                "name": "publicKey",
+                                "type": "byte_array",
+                                "if": {
+                                    "field": "hasSignature",
+                                    "equals": true
+                                }
+                            },
+                            {
+                                "name": "signature",
+                                "type": "byte_array",
+                                "if": {
+                                    "field": "hasSignature",
+                                    "equals": true
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "0x35",
+                "name": "ClientboundPlayerLookAtPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "fromAnchor",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "x",
+                        "type": "double"
+                    },
+                    {
+                        "name": "y",
+                        "type": "double"
+                    },
+                    {
+                        "name": "z",
+                        "type": "double"
+                    },
+                    {
+                        "name": "atEntity",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "entity",
+                        "type": "varint",
+                        "if": {
+                            "field": "atEntity",
+                            "equals": true
+                        }
+                    },
+                    {
+                        "name": "toAnchor",
+                        "type": "varint",
+                        "if": {
+                            "field": "atEntity",
+                            "equals": true
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "0x36",
+                "name": "ClientboundPlayerPositionPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "x",
+                        "type": "double"
+                    },
+                    {
+                        "name": "y",
+                        "type": "double"
+                    },
+                    {
+                        "name": "z",
+                        "type": "double"
+                    },
+                    {
+                        "name": "yRot",
+                        "type": "float"
+                    },
+                    {
+                        "name": "xRot",
+                        "type": "float"
+                    },
+                    {
+                        "name": "relativeArguments",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "id",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "dismountVehicle",
+                        "type": "boolean"
+                    }
+                ]
+            },
+            {
+                "id": "0x37",
+                "name": "ClientboundRecipePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "state",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "craftingOpen",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "craftingFiltering",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "furnaceOpen",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "furnaceFiltering",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "blastFurnaceOpen",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "blastFurnaceFiltering",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "smokerOpen",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "smokerFiltering",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "recipes",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "recipeId",
+                                "type": "string"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "toHighlight",
+                        "type": "collection",
+                        "if": {
+                            "field": "action",
+                            "equals": 0
+                        },
+                        "fields": [
+                            {
+                                "name": "recipeId",
+                                "type": "string"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "0x38",
+                "name": "ClientboundRemoveEntitiesPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "entityIds",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "entityId",
+                                "type": "varint"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "0x39",
+                "name": "ClientboundRemoveMobEffectPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "entityId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "effect",
+                        "type": "int"
+                    }
+                ]
+            },
+            {
+                "id": "0x3A",
+                "name": "ClientboundResourcePackPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "url",
+                        "type": "string"
+                    },
+                    {
+                        "name": "hash",
+                        "type": "string"
+                    },
+                    {
+                        "name": "required",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "hasPrompt",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "prompt",
+                        "type": "string",
+                        "if": {
+                            "field": "hasPrompt",
+                            "equals": true
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "0x3B",
+                "name": "ClientboundRespawnPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "dimensionType",
+                        "type": "string"
+                    },
+                    {
+                        "name": "dimension",
+                        "type": "string"
+                    },
+                    {
+                        "name": "seed",
+                        "type": "long"
+                    },
+                    {
+                        "name": "gameType",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "previousGameType",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "isDebug",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "isFlat",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "keepAllPlayerData",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "hasLastDeathLocation",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "lastDeathLocationDimension",
+                        "type": "string",
+                        "if": {
+                            "field": "hasLastDeathLocation",
+                            "equals": true
+                        }
+                    },
+                    {
+                        "name": "lastDeathLocation",
+                        "type": "blockpos",
+                        "if": {
+                            "field": "hasLastDeathLocation",
+                            "equals": true
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "0x3C",
+                "name": "ClientboundRotateHeadPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "entityId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "yHeadRot",
+                        "type": "byte"
+                    }
+                ]
+            },
+            {
+                "id": "0x3D",
+                "name": "ClientboundSectionBlocksUpdatePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "sectionPos",
+                        "type": "long"
+                    },
+                    {
+                        "name": "suppressLightUpdates",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "blocks",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "block",
+                                "type": "long"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "0x3E",
+                "name": "ClientboundSelectAdvancementsTabPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "hasTab",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "tab",
+                        "type": "string",
+                        "if": {
+                            "field": "hasTab",
+                            "equals": true
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "0x3F",
+                "name": "ClientboundServerDataPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "hasMotd",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "motd",
+                        "type": "string",
+                        "if": {
+                            "field": "hasMotd",
+                            "equals": true
+                        }
+                    },
+                    {
+                        "name": "hasIcon",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "iconBase64",
+                        "type": "string",
+                        "if": {
+                            "field": "hasIcon",
+                            "equals": true
+                        }
+                    },
+                    {
+                        "name": "previewsChat",
+                        "type": "boolean"
+                    }
+                ]
+            },
+            {
+                "id": "0x40",
+                "name": "ClientboundSetActionBarTextPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "text",
+                        "type": "string"
+                    }
+                ]
+            },
+            {
+                "id": "0x41",
+                "name": "ClientboundSetBorderCenterPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "newCenterX",
+                        "type": "double"
+                    },
+                    {
+                        "name": "newCenterZ",
+                        "type": "double"
+                    }
+                ]
+            },
+            {
+                "id": "0x42",
+                "name": "ClientboundSetBorderLerpSizePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "oldSize",
+                        "type": "double"
+                    },
+                    {
+                        "name": "newSize",
+                        "type": "double"
+                    },
+                    {
+                        "name": "lerpTime",
+                        "type": "varlong"
+                    }
+                ]
+            },
+            {
+                "id": "0x43",
+                "name": "ClientboundSetBorderSizePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "size",
+                        "type": "double"
+                    }
+                ]
+            },
+            {
+                "id": "0x44",
+                "name": "ClientboundSetBorderWarningDelayPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "warningDelay",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "id": "0x45",
+                "name": "ClientboundSetBorderWarningDistancePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "warningBlocks",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "id": "0x46",
+                "name": "ClientboundSetCameraPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "cameraId",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "id": "0x47",
+                "name": "ClientboundSetCarriedItemPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "slot",
+                        "type": "byte"
+                    }
+                ]
+            },
+            {
+                "id": "0x48",
+                "name": "ClientboundSetChunkCacheCenterPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "x",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "z",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "id": "0x49",
+                "name": "ClientboundSetChunkCacheRadiusPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "radius",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "id": "0x4A",
+                "name": "ClientboundSetDefaultSpawnPositionPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "position",
+                        "type": "blockpos"
+                    },
+                    {
+                        "name": "angle",
+                        "type": "float"
+                    }
+                ]
+            },
+            {
+                "id": "0x4B",
+                "name": "ClientboundSetDisplayChatPreviewPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "enabled",
+                        "type": "boolean"
+                    }
+                ]
+            },
+            {
+                "id": "0x4C",
+                "name": "ClientboundSetDisplayObjectivePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "slot",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "objectiveName",
+                        "type": "string"
+                    }
+                ]
+            },
+            {
+                "id": "0x4D",
+                "name": "ClientboundSetEntityDataPacket",
+                "to": "client",
+                "fields": [],
+                "notes": "todo"
+            },
+            {
+                "id": "0x4E",
+                "name": "ClientboundSetEntityLinkPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "sourceId",
+                        "type": "int"
+                    },
+                    {
+                        "name": "destId",
+                        "type": "int"
+                    }
+                ]
+            },
+            {
+                "id": "0x4F",
+                "name": "ClientboundSetEntityMotionPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "id",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "xa",
+                        "type": "short"
+                    },
+                    {
+                        "name": "ya",
+                        "type": "short"
+                    },
+                    {
+                        "name": "za",
+                        "type": "short"
+                    }
+                ]
+            },
+            {
+                "id": "0x50",
+                "name": "ClientboundSetEquipmentPacket",
+                "to": "client",
+                "fields": [],
+                "notes": "todo"
+            },
+            {
+                "id": "0x51",
+                "name": "ClientboundSetExperiencePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "experienceProgress",
+                        "type": "float"
+                    },
+                    {
+                        "name": "experienceLevel",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "totalExperience",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "id": "0x52",
+                "name": "ClientboundSetHealthPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "health",
+                        "type": "float"
+                    },
+                    {
+                        "name": "food",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "saturation",
+                        "type": "float"
+                    }
+                ]
+            },
+            {
+                "id": "0x53",
+                "name": "ClientboundSetObjectivePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "objectiveName",
+                        "type": "string"
+                    },
+                    {
+                        "name": "method",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "displayName",
+                        "type": "string",
+                        "if": {
+                            "field": "method",
+                            "equals": [0, 2]
+                        }
+                    },
+                    {
+                        "name": "renderType",
+                        "type": "varint",
+                        "if": {
+                            "field": "method",
+                            "equals": [0, 2]
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "0x54",
+                "name": "ClientboundSetPassengersPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "vehicle",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "passengers",
+                        "type": "varint_array"
+                    }
+                ]
+            },
+            {
+                "id": "0x55",
+                "name": "ClientboundSetPlayerTeamPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "method",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "displayname",
+                        "type": "string",
+                        "if": {
+                            "field": "method",
+                            "equals": [0, 2]
+                        }
+                    },
+                    {
+                        "name": "friendlyFlags",
+                        "type": "byte",
+                        "if": {
+                            "field": "method",
+                            "equals": [0, 2]
+                        }
+                    },
+                    {
+                        "name": "nameTagVisibility",
+                        "type": "string",
+                        "if": {
+                            "field": "method",
+                            "equals": [0, 2]
+                        }
+                    },
+                    {
+                        "name": "collisionRule",
+                        "type": "string",
+                        "if": {
+                            "field": "method",
+                            "equals": [0, 2]
+                        }
+                    },
+                    {
+                        "name": "color",
+                        "type": "varint",
+                        "if": {
+                            "field": "method",
+                            "equals": [0, 2]
+                        }
+                    },
+                    {
+                        "name": "prefix",
+                        "type": "string",
+                        "if": {
+                            "field": "method",
+                            "equals": [0, 2]
+                        }
+                    },
+                    {
+                        "name": "suffix",
+                        "type": "string",
+                        "if": {
+                            "field": "method",
+                            "equals": [0, 2]
+                        }
+                    },
+                    {
+                        "name": "entities",
+                        "type": "collection",
+                        "if": {
+                            "field": "method",
+                            "equals": [0, 3, 4]
+                        },
+                        "fields": [
+                            {
+                                "name": "entity",
+                                "type": "string"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "0x56",
+                "name": "ClientboundSetScorePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "owner",
+                        "type": "string"
+                    },
+                    {
+                        "name": "method",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "objectiveName",
+                        "type": "string"
+                    },
+                    {
+                        "name": "score",
+                        "type": "varint",
+                        "if": {
+                            "field": "method",
+                            "not_equal": 1
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "0x57",
+                "name": "ClientboundSetSimulationDistancePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "simulationDistance",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "id": "0x58",
+                "name": "ClientboundSetSubtitleTextPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "text",
+                        "type": "string"
+                    }
+                ]
+            },
+            {
+                "id": "0x59",
+                "name": "ClientboundSetTimePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "gameTime",
+                        "type": "long"
+                    },
+                    {
+                        "name": "dayTime",
+                        "type": "long"
+                    }
+                ]
+            },
+            {
+                "id": "0x5A",
+                "name": "ClientboundSetTitleTextPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "text",
+                        "type": "string"
+                    }
+                ]
+            },
+            {
+                "id": "0x5B",
+                "name": "ClientboundSetTitlesAnimationPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "fadeIn",
+                        "type": "int"
+                    },
+                    {
+                        "name": "stay",
+                        "type": "int"
+                    },
+                    {
+                        "name": "fadeOut",
+                        "type": "int"
+                    }
+                ]
+            },
+            {
+                "id": "0x5C",
+                "name": "ClientboundSoundEntityPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "sound",
+                        "type": "string"
+                    },
+                    {
+                        "name": "source",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "id",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "volume",
+                        "type": "float"
+                    },
+                    {
+                        "name": "pitch",
+                        "type": "float"
+                    },
+                    {
+                        "name": "seed",
+                        "type": "long"
+                    }
+                ]
+            },
+            {
+                "id": "0x5D",
+                "name": "ClientboundSoundPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "sound",
+                        "type": "string"
+                    },
+                    {
+                        "name": "source",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "x",
+                        "type": "int"
+                    },
+                    {
+                        "name": "y",
+                        "type": "int"
+                    },
+                    {
+                        "name": "z",
+                        "type": "int"
+                    },
+                    {
+                        "name": "volume",
+                        "type": "float"
+                    },
+                    {
+                        "name": "pitch",
+                        "type": "float"
+                    },
+                    {
+                        "name": "seed",
+                        "type": "long"
+                    }
+                ]
+            },
+            {
+                "id": "0x5E",
+                "name": "ClientboundStopSoundPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "flags",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "source",
+                        "type": "varint",
+                        "if": {
+                            "field": "flags",
+                            "byte_mask": "0x01"
+                        }
+                    },
+                    {
+                        "name": "sound",
+                        "type": "string",
+                        "if": {
+                            "field": "flags",
+                            "byte_mask": "0x02"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "0x5F",
+                "name": "ClientboundSystemChatPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "content",
+                        "type": "string"
+                    },
+                    {
+                        "name": "typeId",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "id": "0x60",
+                "name": "ClientboundTabListPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "header",
+                        "type": "string"
+                    },
+                    {
+                        "name": "footer",
+                        "type": "string"
+                    }
+                ]
+            },
+            {
+                "id": "0x61",
+                "name": "ClientboundTagQueryPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "transactionId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "tag",
+                        "type": "nbt"
+                    }
+                ]
+            },
+            {
+                "id": "0x62",
+                "name": "ClientboundTakeItemEntityPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "itemId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "playerId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "amount",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "id": "0x63",
+                "name": "ClientboundTeleportEntityPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "id",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "x",
+                        "type": "double"
+                    },
+                    {
+                        "name": "y",
+                        "type": "double"
+                    },
+                    {
+                        "name": "z",
+                        "type": "double"
+                    },
+                    {
+                        "name": "yRot",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "xRot",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "onGround",
+                        "type": "boolean"
+                    }
+                ]
+            },
+            {
+                "id": "0x64",
+                "name": "ClientboundUpdateAdvancementsPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "reset",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "added",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "type": "string"
+                            },
+                            {
+                                "name": "hasParent",
+                                "type": "boolean"
+                            },
+                            {
+                                "name": "parentId",
+                                "type": "string",
+                                "if": {
+                                    "field": "hasParent",
+                                    "equals": true
+                                }
+                            },
+                            {
+                                "name": "hasDisplay",
+                                "type": "boolean"
+                            },
+                            {
+                                "name": "title",
+                                "type": "string",
+                                "if": {
+                                    "field": "hasDisplay",
+                                    "equals": true
+                                }
+                            },
+                            {
+                                "name": "description",
+                                "type": "string",
+                                "if": {
+                                    "field": "hasDisplay",
+                                    "equals": true
+                                }
+                            },
+                            {
+                                "name": "icon",
+                                "type": "item",
+                                "if": {
+                                    "field": "hasDisplay",
+                                    "equals": true
+                                }
+                            },
+                            {
+                                "name": "frameType",
+                                "type": "varint",
+                                "if": {
+                                    "field": "hasDisplay",
+                                    "equals": true
+                                }
+                            },
+                            {
+                                "name": "flags",
+                                "type": "int",
+                                "if": {
+                                    "field": "hasDisplay",
+                                    "equals": true
+                                }
+                            },
+                            {
+                                "name": "backgroundTexture",
+                                "type": "string",
+                                "if": {
+                                    "field": "flags",
+                                    "byte_mask": "0x01"
+                                }
+                            },
+                            {
+                                "name": "x",
+                                "type": "float",
+                                "if": {
+                                    "field": "hasDisplay",
+                                    "equals": true
+                                }
+                            },
+                            {
+                                "name": "y",
+                                "type": "float",
+                                "if": {
+                                    "field": "hasDisplay",
+                                    "equals": true
+                                }
+                            },
+                            {
+                                "name": "criteria",
+                                "type": "collection",
+                                "fields": [
+                                    {
+                                        "name": "criterion",
+                                        "type": "string"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "requirements",
+                                "type": "collection",
+                                "fields": [
+                                    {
+                                        "name": "requirement",
+                                        "type": "collection",
+                                        "fields": [
+                                            {
+                                                "name": "requirementId",
+                                                "type": "string"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "removed",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "type": "string"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "progressMap",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "type": "string"
+                            },
+                            {
+                                "name": "criteria",
+                                "type": "collection",
+                                "fields": [
+                                    {
+                                        "name": "criterion",
+                                        "type": "string"
+                                    },
+                                    {
+                                        "name": "achieved",
+                                        "type": "boolean"
+                                    },
+                                    {
+                                        "name": "achieveTime",
+                                        "type": "long",
+                                        "if": {
+                                            "field": "achieved",
+                                            "equals": true
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "0x65",
+                "name": "ClientboundUpdateAttributesPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "entityId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "properties",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "key",
+                                "type": "string"
+                            },
+                            {
+                                "name": "value",
+                                "type": "double"
+                            },
+                            {
+                                "name": "modifiers",
+                                "type": "collection",
+                                "fields": [
+                                    {
+                                        "name": "uuid",
+                                        "type": "uuid"
+                                    },
+                                    {
+                                        "name": "amount",
+                                        "type": "double"
+                                    },
+                                    {
+                                        "name": "operation",
+                                        "type": "byte"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "0x66",
+                "name": "ClientboundUpdateMobEffectPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "entityId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "effectId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "amplifier",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "duration",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "flags",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "hasFactorData",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "factorCodec",
+                        "type": "nbt",
+                        "if": {
+                            "field": "hasFactorData",
+                            "equals": true
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "0x67",
+                "name": "ClientboundUpdateRecipesPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "recipes",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "type",
+                                "type": "string"
+                            },
+                            {
+                                "name": "recipeId",
+                                "type": "string"
+                            },
+                            {
+                                "name": "todo"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "0x68",
+                "name": "ClientboundUpdateTagsPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "tags",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "tagId",
+                                "type": "string"
+                            },
+                            {
+                                "name": "entries",
+                                "type": "collection",
+                                "fields": [
+                                    {
+                                        "name": "entryId",
+                                        "type": "varint"
+                                    }
+                                ]
+                            }
+                        ]
                     }
                 ]
             }
