@@ -90,7 +90,7 @@
                         "type": "long",
                         "if": {
                             "field": "hasKey",
-                            "equals": "true"
+                            "equals": true
                         }
                     },
                     {
@@ -98,7 +98,7 @@
                         "type": "byte_array",
                         "if": {
                             "field": "hasKey",
-                            "equals": "true"
+                            "equals": true
                         }
                     },
                     {
@@ -106,7 +106,7 @@
                         "type": "byte_array",
                         "if": {
                             "field": "hasKey",
-                            "equals": "true"
+                            "equals": true
                         }
                     }
                 ]
@@ -1407,7 +1407,7 @@
                         "type": "varint"
                     },
                     {
-                        "name": "playerId",
+                        "name": "uuid",
                         "type": "uuid"
                     },
                     {
@@ -1708,7 +1708,12 @@
                 "id": "0x0F",
                 "name": "ClientboundCommandsPacket",
                 "to": "client",
-                "fields": [],
+                "fields": [
+                    {
+                        "name": "todo",
+                        "type": "bytes"
+                    }
+                ],
                 "notes": "todo"
             },
             {
@@ -1729,7 +1734,7 @@
                 "fields": [
                     {
                         "name": "containerId",
-                        "type": "byte"
+                        "type": "ubyte"
                     },
                     {
                         "name": "stateId",
@@ -1880,7 +1885,7 @@
                 "fields": [
                     {
                         "name": "entityId",
-                        "type": "varint"
+                        "type": "int"
                     },
                     {
                         "name": "eventId",
@@ -2000,10 +2005,6 @@
                         "type": "double"
                     },
                     {
-                        "name": "newCenterY",
-                        "type": "double"
-                    },
-                    {
                         "name": "newCenterZ",
                         "type": "double"
                     },
@@ -2048,8 +2049,12 @@
                 "id": "0x1F",
                 "name": "ClientboundLevelChunkWithLightPacket",
                 "to": "client",
-                "fields": [],
-                "notes": "todo"
+                "fields": [
+                    {
+                        "name": "todo",
+                        "type": "bytes"
+                    }
+                ]
             },
             {
                 "id": "0x20",
@@ -2079,6 +2084,12 @@
                 "name": "ClientboundLevelParticlesPacket",
                 "to": "client",
                 "notes": "todo",
+                "fields": [
+                    {
+                        "name": "todo",
+                        "type": "bytes"
+                    }
+                ],
                 "fields_todo": [
                     {
                         "name": "id",
@@ -2131,6 +2142,12 @@
                 "to": "client",
                 "fields": [
                     {
+                        "name": "todo",
+                        "type": "bytes"
+                    }
+                ],
+                "fields_todo": [
+                    {
                         "name": "x",
                         "type": "varint"
                     },
@@ -2151,8 +2168,8 @@
                 "to": "client",
                 "fields": [
                     {
-                        "name": "playerId",
-                        "type": "varint"
+                        "name": "entityId",
+                        "type": "int"
                     },
                     {
                         "name": "hardcore",
@@ -2977,7 +2994,7 @@
                         "name": "toHighlight",
                         "type": "collection",
                         "if": {
-                            "field": "action",
+                            "field": "state",
                             "equals": 0
                         },
                         "fields": [
@@ -3145,7 +3162,7 @@
                         "fields": [
                             {
                                 "name": "block",
-                                "type": "long"
+                                "type": "varlong"
                             }
                         ]
                     }
@@ -3376,7 +3393,12 @@
                 "id": "0x4D",
                 "name": "ClientboundSetEntityDataPacket",
                 "to": "client",
-                "fields": [],
+                "fields": [
+                    {
+                        "name": "todo",
+                        "type": "bytes"
+                    }
+                ],
                 "notes": "todo"
             },
             {
@@ -3421,7 +3443,12 @@
                 "id": "0x50",
                 "name": "ClientboundSetEquipmentPacket",
                 "to": "client",
-                "fields": [],
+                "fields": [
+                    {
+                        "name": "todo",
+                        "type": "bytes"
+                    }
+                ],
                 "notes": "todo"
             },
             {
@@ -3504,7 +3531,13 @@
                     },
                     {
                         "name": "passengers",
-                        "type": "varint_array"
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "passengerId",
+                                "type": "varint"
+                            }
+                        ]
                     }
                 ]
             },
@@ -3725,7 +3758,7 @@
                 "fields": [
                     {
                         "name": "sound",
-                        "type": "string"
+                        "type": "varint"
                     },
                     {
                         "name": "source",
@@ -3839,7 +3872,7 @@
                         "type": "varint"
                     },
                     {
-                        "name": "playerId",
+                        "name": "entityId",
                         "type": "varint"
                     },
                     {
@@ -4139,6 +4172,12 @@
                 "name": "ClientboundUpdateRecipesPacket",
                 "to": "client",
                 "fields": [
+                    {
+                        "name": "todo",
+                        "type": "bytes"
+                    }
+                ],
+                "fields_todo": [
                     {
                         "name": "recipes",
                         "type": "collection",
