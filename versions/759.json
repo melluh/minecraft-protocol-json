@@ -1,7 +1,7 @@
 {
     "version": {
         "protocol": 759,
-        "release": "1.19"
+        "releases": ["1.19"]
     },
     "packets": {
         "handshaking": [
@@ -4203,20 +4203,30 @@
                 "to": "client",
                 "fields": [
                     {
-                        "name": "tags",
+                        "name": "tagTypes",
                         "type": "collection",
                         "fields": [
                             {
-                                "name": "tagId",
+                                "name": "tagType",
                                 "type": "string"
                             },
                             {
-                                "name": "entries",
+                                "name": "tags",
                                 "type": "collection",
                                 "fields": [
                                     {
-                                        "name": "entryId",
-                                        "type": "varint"
+                                        "name": "tagId",
+                                        "type": "string"
+                                    },
+                                    {
+                                        "name": "entries",
+                                        "type": "collection",
+                                        "fields": [
+                                            {
+                                                "name": "entryId",
+                                                "type": "varint"
+                                            }
+                                        ]
                                     }
                                 ]
                             }

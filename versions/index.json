@@ -1,6 +1,6 @@
 [
     {
         "protocol": 759,
-        "release": "1.19"
+        "releases": ["1.19"]
     }
 ]
