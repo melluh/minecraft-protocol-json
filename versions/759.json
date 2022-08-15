@@ -6,7 +6,6 @@
     "packets": {
         "handshaking": [
             {
-                "id": "0x00",
                 "name": "ClientIntentionPacket",
                 "to": "server",
                 "fields": [
@@ -32,13 +31,11 @@
         ],
         "status": [
             {
-                "id": "0x00",
                 "name": "ServerboundStatusRequestPacket",
                 "to": "server",
                 "fields": []
             },
             {
-                "id": "0x01",
                 "name": "ServerboundPingRequestPacket",
                 "to": "server",
                 "fields": [
@@ -49,7 +46,6 @@
                 ]
             },
             {
-                "id": "0x00",
                 "name": "ClientboundStatusResponsePacket",
                 "to": "client",
                 "fields": [
@@ -60,7 +56,6 @@
                 ]
             },
             {
-                "id": "0x01",
                 "name": "ClientboundPongResponsePacket",
                 "to": "client",
                 "fields": [
@@ -73,7 +68,6 @@
         ],
         "login": [
             {
-                "id": "0x00",
                 "name": "ServerboundHelloPacket",
                 "to": "server",
                 "fields": [
@@ -112,7 +106,6 @@
                 ]
             },
             {
-                "id": "0x01",
                 "name": "ServerboundKeyPacket",
                 "to": "server",
                 "fields": [
@@ -153,7 +146,6 @@
                 ]
             },
             {
-                "id": "0x02",
                 "name": "ServerboundCustomQueryPacket",
                 "to": "server",
                 "fields": [
@@ -176,7 +168,6 @@
                 ]
             },
             {
-                "id": "0x00",
                 "name": "ClientboundLoginDisconnectPacket",
                 "to": "client",
                 "fields": [
@@ -187,7 +178,6 @@
                 ]
             },
             {
-                "id": "0x01",
                 "name": "ClientboundHelloPacket",
                 "to": "client",
                 "fields": [
@@ -206,7 +196,6 @@
                 ]
             },
             {
-                "id": "0x02",
                 "name": "ClientboundGameProfilePacket",
                 "to": "client",
                 "fields": [
@@ -247,7 +236,6 @@
                 ]
             },
             {
-                "id": "0x03",
                 "name": "ClientboundLoginCompressionPacket",
                 "to": "client",
                 "fields": [
@@ -258,7 +246,6 @@
                 ]
             },
             {
-                "id": "0x04",
                 "name": "ClientboundCustomQueryPacket",
                 "to": "client",
                 "fields": [
@@ -279,7 +266,6 @@
         ],
         "play": [
             {
-                "id": "0x00",
                 "name": "ServerboundAcceptTeleportationPacket",
                 "to": "server",
                 "fields": [
@@ -290,7 +276,6 @@
                 ]
             },
             {
-                "id": "0x01",
                 "name": "ServerboundBlockEntityTagQuery",
                 "to": "server",
                 "fields": [
@@ -305,7 +290,6 @@
                 ]
             },
             {
-                "id": "0x02",
                 "name": "ServerboundChangeDifficultyPacket",
                 "to": "server",
                 "fields": [
@@ -316,7 +300,6 @@
                 ]
             },
             {
-                "id": "0x03",
                 "name": "ServerboundChatCommandPacket",
                 "to": "server",
                 "fields": [
@@ -353,7 +336,6 @@
                 ]
             },
             {
-                "id": "0x04",
                 "name": "ServerboundChatPacket",
                 "to": "server",
                 "fields": [
@@ -380,7 +362,6 @@
                 ]
             },
             {
-                "id": "0x05",
                 "name": "ServerboundChatPreviewPacket",
                 "to": "server",
                 "fields": [
@@ -395,7 +376,6 @@
                 ]
             },
             {
-                "id": "0x06",
                 "name": "ServerboundClientCommandPacket",
                 "to": "server",
                 "fields": [
@@ -406,7 +386,6 @@
                 ]
             },
             {
-                "id": "0x07",
                 "name": "ServerboundClientInformationPacket",
                 "to": "server",
                 "fields": [
@@ -445,7 +424,6 @@
                 ]
             },
             {
-                "id": "0x08",
                 "name": "ServerboundCommandSuggestionPacket",
                 "to": "server",
                 "fields": [
@@ -460,7 +438,6 @@
                 ]
             },
             {
-                "id": "0x09",
                 "name": "ServerboundContainerButtonClickPacket",
                 "to": "server",
                 "fields": [
@@ -475,7 +452,6 @@
                 ]
             },
             {
-                "id": "0x0A",
                 "name": "ServerboundContainerClickPacket",
                 "to": "server",
                 "fields": [
@@ -520,7 +496,6 @@
                 ]
             },
             {
-                "id": "0x0B",
                 "name": "ServerboundContainerClosePacket",
                 "to": "server",
                 "fields": [
@@ -531,7 +506,6 @@
                 ]
             },
             {
-                "id": "0x0C",
                 "name": "ServerboundCustomPayloadPacket",
                 "to": "server",
                 "fields": [
@@ -546,7 +520,6 @@
                 ]
             },
             {
-                "id": "0x0D",
                 "name": "ServerboundEditBookPacket",
                 "to": "server",
                 "fields": [
@@ -579,7 +552,6 @@
                 ]
             },
             {
-                "id": "0x0E",
                 "name": "ServerboundEntityTagQuery",
                 "to": "server",
                 "fields": [
@@ -594,7 +566,6 @@
                 ]
             },
             {
-                "id": "0x0F",
                 "name": "ServerboundInteractPacket",
                 "to": "server",
                 "fields": [
@@ -646,7 +617,6 @@
                 ]
             },
             {
-                "id": "0x10",
                 "name": "ServerboundJigsawGeneratePacket",
                 "to": "server",
                 "fields": [
@@ -665,7 +635,6 @@
                 ]
             },
             {
-                "id": "0x11",
                 "name": "ServerboundKeepAlivePacket",
                 "to": "server",
                 "fields": [
@@ -676,7 +645,6 @@
                 ]
             },
             {
-                "id": "0x12",
                 "name": "ServerboundLockDifficultyPacket",
                 "to": "server",
                 "fields": [
@@ -687,7 +655,6 @@
                 ]
             },
             {
-                "id": "0x13",
                 "name": "ServerboundMovePlayerPacket.Pos",
                 "to": "server",
                 "fields": [
@@ -710,7 +677,6 @@
                 ]
             },
             {
-                "id": "0x14",
                 "name": "ServerboundMovePlayerPacket.PosRot",
                 "to": "server",
                 "fields": [
@@ -741,7 +707,6 @@
                 ]
             },
             {
-                "id": "0x15",
                 "name": "ServerboundMovePlayerPacket.Rot",
                 "to": "server",
                 "fields": [
@@ -760,7 +725,6 @@
                 ]
             },
             {
-                "id": "0x16",
                 "name": "ServerboundMovePlayerPacket.StatusOnly",
                 "to": "server",
                 "fields": [
@@ -771,7 +735,6 @@
                 ]
             },
             {
-                "id": "0x17",
                 "name": "ServerboundMoveVehiclePacket",
                 "to": "server",
                 "fields": [
@@ -798,7 +761,6 @@
                 ]
             },
             {
-                "id": "0x18",
                 "name": "ServerboundPaddleBoatPacket",
                 "to": "server",
                 "fields": [
@@ -813,7 +775,6 @@
                 ]
             },
             {
-                "id": "0x19",
                 "name": "ServerboundPickItemPacket",
                 "to": "server",
                 "fields": [
@@ -824,7 +785,6 @@
                 ]
             },
             {
-                "id": "0x1A",
                 "name": "ServerboundPlaceRecipePacket",
                 "to": "server",
                 "fields": [
@@ -843,7 +803,6 @@
                 ]
             },
             {
-                "id": "0x1B",
                 "name": "ServerboundPlayerAbilitiesPacket",
                 "to": "server",
                 "fields": [
@@ -854,7 +813,6 @@
                 ]
             },
             {
-                "id": "0x1C",
                 "name": "ServerboundPlayerActionPacket",
                 "to": "server",
                 "fields": [
@@ -877,7 +835,6 @@
                 ]
             },
             {
-                "id": "0x1D",
                 "name": "ServerboundPlayerCommandPacket",
                 "to": "server",
                 "fields": [
@@ -896,7 +853,6 @@
                 ]
             },
             {
-                "id": "0x1E",
                 "name": "ServerboundPlayerInputPacket",
                 "to": "server",
                 "fields": [
@@ -915,7 +871,6 @@
                 ]
             },
             {
-                "id": "0x1F",
                 "name": "ServerboundPongPacket",
                 "to": "server",
                 "fields": [
@@ -926,7 +881,6 @@
                 ]
             },
             {
-                "id": "0x20",
                 "name": "ServerboundRecipeBookChangeSettingsPacket",
                 "to": "server",
                 "fields": [
@@ -945,7 +899,6 @@
                 ]
             },
             {
-                "id": "0x21",
                 "name": "ServerboundRecipeBookSeenRecipePacket",
                 "to": "server",
                 "fields": [
@@ -956,7 +909,6 @@
                 ]
             },
             {
-                "id": "0x22",
                 "name": "ServerboundRenameItemPacket",
                 "to": "server",
                 "fields": [
@@ -967,7 +919,6 @@
                 ]
             },
             {
-                "id": "0x23",
                 "name": "ServerboundResourcePackPacket",
                 "to": "server",
                 "fields": [
@@ -978,7 +929,6 @@
                 ]
             },
             {
-                "id": "0x24",
                 "name": "ServerboundSeenAdvancementsPacket",
                 "to": "server",
                 "fields": [
@@ -997,7 +947,6 @@
                 ]
             },
             {
-                "id": "0x25",
                 "name": "ServerboundSelectTradePacket",
                 "to": "server",
                 "fields": [
@@ -1008,7 +957,6 @@
                 ]
             },
             {
-                "id": "0x26",
                 "name": "ServerboundSetBeaconPacket",
                 "to": "server",
                 "fields": [
@@ -1039,7 +987,6 @@
                 ]
             },
             {
-                "id": "0x27",
                 "name": "ServerboundSetCarriedItemPacket",
                 "to": "server",
                 "fields": [
@@ -1050,7 +997,6 @@
                 ]
             },
             {
-                "id": "0x28",
                 "name": "ServerboundSetCommandBlockPacket",
                 "to": "server",
                 "fields": [
@@ -1073,7 +1019,6 @@
                 ]
             },
             {
-                "id": "0x29",
                 "name": "ServerboundSetCommandMinecartPacket",
                 "to": "server",
                 "fields": [
@@ -1092,7 +1037,6 @@
                 ]
             },
             {
-                "id": "0x2A",
                 "name": "ServerboundSetCreativeModeSlotPacket",
                 "to": "server",
                 "fields": [
@@ -1107,7 +1051,6 @@
                 ]
             },
             {
-                "id": "0x2B",
                 "name": "ServerboundSetJigsawBlockPacket",
                 "to": "server",
                 "fields": [
@@ -1138,7 +1081,6 @@
                 ]
             },
             {
-                "id": "0x2C",
                 "name": "ServerboundSetStructureBlockPacket",
                 "to": "server",
                 "fields": [
@@ -1209,7 +1151,6 @@
                 ]
             },
             {
-                "id": "0x2D",
                 "name": "ServerboundSignUpdatePacket",
                 "to": "server",
                 "fields": [
@@ -1236,7 +1177,6 @@
                 ]
             },
             {
-                "id": "0x2E",
                 "name": "ServerboundSwingPacket",
                 "to": "server",
                 "fields": [
@@ -1247,7 +1187,6 @@
                 ]
             },
             {
-                "id": "0x2F",
                 "name": "ServerboundTeleportToEntityPacket",
                 "to": "server",
                 "fields": [
@@ -1258,7 +1197,6 @@
                 ]
             },
             {
-                "id": "0x30",
                 "name": "ServerboundUseItemOnPacket",
                 "to": "server",
                 "fields": [
@@ -1297,7 +1235,6 @@
                 ]
             },
             {
-                "id": "0x31",
                 "name": "ServerboundUseItemPacket",
                 "to": "server",
                 "fields": [
@@ -1312,7 +1249,6 @@
                 ]
             },
             {
-                "id": "0x00",
                 "name": "ClientboundAddEntityPacket",
                 "to": "client",
                 "fields": [
@@ -1371,7 +1307,6 @@
                 ]
             },
             {
-                "id": "0x01",
                 "name": "ClientboundAddExperienceOrbPacket",
                 "to": "client",
                 "fields": [
@@ -1398,7 +1333,6 @@
                 ]
             },
             {
-                "id": "0x02",
                 "name": "ClientboundAddPlayerPacket",
                 "to": "client",
                 "fields": [
@@ -1433,7 +1367,6 @@
                 ]
             },
             {
-                "id": "0x03",
                 "name": "ClientboundAnimatePacket",
                 "to": "client",
                 "fields": [
@@ -1448,7 +1381,6 @@
                 ]
             },
             {
-                "id": "0x04",
                 "name": "ClientboundAwardStatsPacket",
                 "to": "client",
                 "fields": [
@@ -1473,7 +1405,6 @@
                 ]
             },
             {
-                "id": "0x05",
                 "name": "ClientboundBlockChangedAckPacket",
                 "to": "client",
                 "fields": [
@@ -1484,7 +1415,6 @@
                 ]
             },
             {
-                "id": "0x06",
                 "name": "ClientboundBlockDestructionPacket",
                 "to": "client",
                 "fields": [
@@ -1503,7 +1433,6 @@
                 ]
             },
             {
-                "id": "0x07",
                 "name": "ClientboundBlockEntityDataPacket",
                 "to": "client",
                 "fields": [
@@ -1522,7 +1451,6 @@
                 ]
             },
             {
-                "id": "0x08",
                 "name": "ClientboundBlockEventPacket",
                 "to": "client",
                 "fields": [
@@ -1545,7 +1473,6 @@
                 ]
             },
             {
-                "id": "0x09",
                 "name": "ClientboundBlockUpdatePacket",
                 "to": "client",
                 "fields": [
@@ -1560,7 +1487,6 @@
                 ]
             },
             {
-                "id": "0x0A",
                 "name": "ClientboundBossEventPacket",
                 "to": "client",
                 "fields": [
@@ -1615,7 +1541,6 @@
                 ]
             },
             {
-                "id": "0x0B",
                 "name": "ClientboundChangeDifficultyPacket",
                 "to": "client",
                 "fields": [
@@ -1630,7 +1555,6 @@
                 ]
             },
             {
-                "id": "0x0C",
                 "name": "ClientboundChatPreviewPacket",
                 "to": "client",
                 "fields": [
@@ -1653,7 +1577,6 @@
                 ]
             },
             {
-                "id": "0x0D",
                 "name": "ClientboundClearTitlesPacket",
                 "to": "client",
                 "fields": [
@@ -1664,7 +1587,6 @@
                 ]
             },
             {
-                "id": "0x0E",
                 "name": "ClientboundCommandSuggestionsPacket",
                 "to": "client",
                 "fields": [
@@ -1705,7 +1627,6 @@
                 ]
             },
             {
-                "id": "0x0F",
                 "name": "ClientboundCommandsPacket",
                 "to": "client",
                 "fields": [
@@ -1717,7 +1638,6 @@
                 "notes": "todo"
             },
             {
-                "id": "0x10",
                 "name": "ClientboundContainerClosePacket",
                 "to": "client",
                 "fields": [
@@ -1728,7 +1648,6 @@
                 ]
             },
             {
-                "id": "0x11",
                 "name": "ClientboundContainerSetContentPacket",
                 "to": "client",
                 "fields": [
@@ -1757,7 +1676,6 @@
                 ]
             },
             {
-                "id": "0x12",
                 "name": "ClientboundContainerSetDataPacket",
                 "to": "client",
                 "fields": [
@@ -1776,7 +1694,6 @@
                 ]
             },
             {
-                "id": "0x13",
                 "name": "ClientboundContainerSetSlotPacket",
                 "to": "client",
                 "fields": [
@@ -1799,7 +1716,6 @@
                 ]
             },
             {
-                "id": "0x14",
                 "name": "ClientboundCooldownPacket",
                 "to": "client",
                 "fields": [
@@ -1814,7 +1730,6 @@
                 ]
             },
             {
-                "id": "0x15",
                 "name": "ClientboundCustomPayloadPacket",
                 "to": "client",
                 "fields": [
@@ -1829,7 +1744,6 @@
                 ]
             },
             {
-                "id": "0x16",
                 "name": "ClientboundCustomSoundPacket",
                 "to": "client",
                 "fields": [
@@ -1868,7 +1782,6 @@
                 ]
             },
             {
-                "id": "0x17",
                 "name": "ClientboundDisconnectPacket",
                 "to": "client",
                 "fields": [
@@ -1879,7 +1792,6 @@
                 ]
             },
             {
-                "id": "0x18",
                 "name": "ClientboundEntityEventPacket",
                 "to": "client",
                 "fields": [
@@ -1894,7 +1806,6 @@
                 ]
             },
             {
-                "id": "0x19",
                 "name": "ClientboundExplodePacket",
                 "to": "client",
                 "fields": [
@@ -1947,7 +1858,6 @@
                 ]
             },
             {
-                "id": "0x1A",
                 "name": "ClientboundForgetLevelChunkPacket",
                 "to": "client",
                 "fields": [
@@ -1962,7 +1872,6 @@
                 ]
             },
             {
-                "id": "0x1B",
                 "name": "ClientboundGameEventPacket",
                 "to": "client",
                 "fields": [
@@ -1977,7 +1886,6 @@
                 ]
             },
             {
-                "id": "0x1C",
                 "name": "ClientboundHorseScreenOpenPacket",
                 "to": "client",
                 "fields": [
@@ -1996,7 +1904,6 @@
                 ]
             },
             {
-                "id": "0x1D",
                 "name": "ClientboundInitializeBorderPacket",
                 "to": "client",
                 "fields": [
@@ -2035,7 +1942,6 @@
                 ]
             },
             {
-                "id": "0x1E",
                 "name": "ClientboundKeepAlivePacket",
                 "to": "client",
                 "fields": [
@@ -2046,7 +1952,6 @@
                 ]
             },
             {
-                "id": "0x1F",
                 "name": "ClientboundLevelChunkWithLightPacket",
                 "to": "client",
                 "fields": [
@@ -2057,7 +1962,6 @@
                 ]
             },
             {
-                "id": "0x20",
                 "name": "ClientboundLevelEventPacket",
                 "to": "client",
                 "fields": [
@@ -2080,7 +1984,6 @@
                 ]
             },
             {
-                "id": "0x21",
                 "name": "ClientboundLevelParticlesPacket",
                 "to": "client",
                 "notes": "todo",
@@ -2137,7 +2040,6 @@
                 ]
             },
             {
-                "id": "0x22",
                 "name": "ClientboundLightUpdatePacket",
                 "to": "client",
                 "fields": [
@@ -2163,7 +2065,6 @@
                 ]
             },
             {
-                "id": "0x23",
                 "name": "ClientboundLoginPacket",
                 "to": "client",
                 "fields": [
@@ -2260,7 +2161,6 @@
                 ]
             },
             {
-                "id": "0x24",
                 "name": "ClientboundMapItemDataPacket",
                 "to": "client",
                 "fields": [
@@ -2365,7 +2265,6 @@
                 ]
             },
             {
-                "id": "0x25",
                 "name": "ClientboundMerchantOffersPacket",
                 "to": "client",
                 "fields": [
@@ -2438,7 +2337,6 @@
                 ]
             },
             {
-                "id": "0x26",
                 "name": "ClientboundMoveEntityPacket.Pos",
                 "to": "client",
                 "fields": [
@@ -2465,7 +2363,6 @@
                 ]
             },
             {
-                "id": "0x27",
                 "name": "ClientboundMoveEntityPacket.PosRot",
                 "to": "client",
                 "fields": [
@@ -2500,7 +2397,6 @@
                 ]
             },
             {
-                "id": "0x28",
                 "name": "ClientboundMoveEntityPacket.Rot",
                 "to": "client",
                 "fields": [
@@ -2523,7 +2419,6 @@
                 ]
             },
             {
-                "id": "0x29",
                 "name": "ClientboundMoveVehiclePacket",
                 "to": "client",
                 "fields": [
@@ -2550,7 +2445,6 @@
                 ]
             },
             {
-                "id": "0x2A",
                 "name": "ClientboundOpenBookPacket",
                 "to": "client",
                 "fields": [
@@ -2561,7 +2455,6 @@
                 ]
             },
             {
-                "id": "0x2B",
                 "name": "ClientboundOpenScreenPacket",
                 "to": "client",
                 "fields": [
@@ -2580,7 +2473,6 @@
                 ]
             },
             {
-                "id": "0x2C",
                 "name": "ClientboundOpenSignEditorPacket",
                 "to": "client",
                 "fields": [
@@ -2591,7 +2483,6 @@
                 ]
             },
             {
-                "id": "0x2D",
                 "name": "ClientboundPingPacket",
                 "to": "client",
                 "fields": [
@@ -2602,7 +2493,6 @@
                 ]
             },
             {
-                "id": "0x2E",
                 "name": "ClientboundPlaceGhostRecipePacket",
                 "to": "client",
                 "fields": [
@@ -2617,7 +2507,6 @@
                 ]
             },
             {
-                "id": "0x2F",
                 "name": "ClientboundPlayerAbilitiesPacket",
                 "to": "client",
                 "fields": [
@@ -2636,7 +2525,6 @@
                 ]
             },
             {
-                "id": "0x30",
                 "name": "ClientboundPlayerChatPacket",
                 "to": "client",
                 "fields": [
@@ -2695,7 +2583,6 @@
                 ]
             },
             {
-                "id": "0x31",
                 "name": "ClientboundPlayerCombatEndPacket",
                 "to": "client",
                 "fields": [
@@ -2710,13 +2597,11 @@
                 ]
             },
             {
-                "id": "0x32",
                 "name": "ClientboundPlayerCombatEnterPacket",
                 "to": "client",
                 "fields": []
             },
             {
-                "id": "0x33",
                 "name": "ClientboundPlayerCombatKillPacket",
                 "to": "client",
                 "fields": [
@@ -2735,7 +2620,6 @@
                 ]
             },
             {
-                "id": "0x34",
                 "name": "ClientboundPlayerInfoPacket",
                 "to": "client",
                 "fields": [
@@ -2858,7 +2742,6 @@
                 ]
             },
             {
-                "id": "0x35",
                 "name": "ClientboundPlayerLookAtPacket",
                 "to": "client",
                 "fields": [
@@ -2901,7 +2784,6 @@
                 ]
             },
             {
-                "id": "0x36",
                 "name": "ClientboundPlayerPositionPacket",
                 "to": "client",
                 "fields": [
@@ -2940,7 +2822,6 @@
                 ]
             },
             {
-                "id": "0x37",
                 "name": "ClientboundRecipePacket",
                 "to": "client",
                 "fields": [
@@ -3007,7 +2888,6 @@
                 ]
             },
             {
-                "id": "0x38",
                 "name": "ClientboundRemoveEntitiesPacket",
                 "to": "client",
                 "fields": [
@@ -3024,7 +2904,6 @@
                 ]
             },
             {
-                "id": "0x39",
                 "name": "ClientboundRemoveMobEffectPacket",
                 "to": "client",
                 "fields": [
@@ -3039,7 +2918,6 @@
                 ]
             },
             {
-                "id": "0x3A",
                 "name": "ClientboundResourcePackPacket",
                 "to": "client",
                 "fields": [
@@ -3070,7 +2948,6 @@
                 ]
             },
             {
-                "id": "0x3B",
                 "name": "ClientboundRespawnPacket",
                 "to": "client",
                 "fields": [
@@ -3129,7 +3006,6 @@
                 ]
             },
             {
-                "id": "0x3C",
                 "name": "ClientboundRotateHeadPacket",
                 "to": "client",
                 "fields": [
@@ -3144,7 +3020,6 @@
                 ]
             },
             {
-                "id": "0x3D",
                 "name": "ClientboundSectionBlocksUpdatePacket",
                 "to": "client",
                 "fields": [
@@ -3169,7 +3044,6 @@
                 ]
             },
             {
-                "id": "0x3E",
                 "name": "ClientboundSelectAdvancementsTabPacket",
                 "to": "client",
                 "fields": [
@@ -3188,7 +3062,6 @@
                 ]
             },
             {
-                "id": "0x3F",
                 "name": "ClientboundServerDataPacket",
                 "to": "client",
                 "fields": [
@@ -3223,7 +3096,6 @@
                 ]
             },
             {
-                "id": "0x40",
                 "name": "ClientboundSetActionBarTextPacket",
                 "to": "client",
                 "fields": [
@@ -3234,7 +3106,6 @@
                 ]
             },
             {
-                "id": "0x41",
                 "name": "ClientboundSetBorderCenterPacket",
                 "to": "client",
                 "fields": [
@@ -3249,7 +3120,6 @@
                 ]
             },
             {
-                "id": "0x42",
                 "name": "ClientboundSetBorderLerpSizePacket",
                 "to": "client",
                 "fields": [
@@ -3268,7 +3138,6 @@
                 ]
             },
             {
-                "id": "0x43",
                 "name": "ClientboundSetBorderSizePacket",
                 "to": "client",
                 "fields": [
@@ -3279,7 +3148,6 @@
                 ]
             },
             {
-                "id": "0x44",
                 "name": "ClientboundSetBorderWarningDelayPacket",
                 "to": "client",
                 "fields": [
@@ -3290,7 +3158,6 @@
                 ]
             },
             {
-                "id": "0x45",
                 "name": "ClientboundSetBorderWarningDistancePacket",
                 "to": "client",
                 "fields": [
@@ -3301,7 +3168,6 @@
                 ]
             },
             {
-                "id": "0x46",
                 "name": "ClientboundSetCameraPacket",
                 "to": "client",
                 "fields": [
@@ -3312,7 +3178,6 @@
                 ]
             },
             {
-                "id": "0x47",
                 "name": "ClientboundSetCarriedItemPacket",
                 "to": "client",
                 "fields": [
@@ -3323,7 +3188,6 @@
                 ]
             },
             {
-                "id": "0x48",
                 "name": "ClientboundSetChunkCacheCenterPacket",
                 "to": "client",
                 "fields": [
@@ -3338,7 +3202,6 @@
                 ]
             },
             {
-                "id": "0x49",
                 "name": "ClientboundSetChunkCacheRadiusPacket",
                 "to": "client",
                 "fields": [
@@ -3349,7 +3212,6 @@
                 ]
             },
             {
-                "id": "0x4A",
                 "name": "ClientboundSetDefaultSpawnPositionPacket",
                 "to": "client",
                 "fields": [
@@ -3364,7 +3226,6 @@
                 ]
             },
             {
-                "id": "0x4B",
                 "name": "ClientboundSetDisplayChatPreviewPacket",
                 "to": "client",
                 "fields": [
@@ -3375,7 +3236,6 @@
                 ]
             },
             {
-                "id": "0x4C",
                 "name": "ClientboundSetDisplayObjectivePacket",
                 "to": "client",
                 "fields": [
@@ -3390,7 +3250,6 @@
                 ]
             },
             {
-                "id": "0x4D",
                 "name": "ClientboundSetEntityDataPacket",
                 "to": "client",
                 "fields": [
@@ -3402,7 +3261,6 @@
                 "notes": "todo"
             },
             {
-                "id": "0x4E",
                 "name": "ClientboundSetEntityLinkPacket",
                 "to": "client",
                 "fields": [
@@ -3417,7 +3275,6 @@
                 ]
             },
             {
-                "id": "0x4F",
                 "name": "ClientboundSetEntityMotionPacket",
                 "to": "client",
                 "fields": [
@@ -3440,7 +3297,6 @@
                 ]
             },
             {
-                "id": "0x50",
                 "name": "ClientboundSetEquipmentPacket",
                 "to": "client",
                 "fields": [
@@ -3452,7 +3308,6 @@
                 "notes": "todo"
             },
             {
-                "id": "0x51",
                 "name": "ClientboundSetExperiencePacket",
                 "to": "client",
                 "fields": [
@@ -3471,7 +3326,6 @@
                 ]
             },
             {
-                "id": "0x52",
                 "name": "ClientboundSetHealthPacket",
                 "to": "client",
                 "fields": [
@@ -3490,7 +3344,6 @@
                 ]
             },
             {
-                "id": "0x53",
                 "name": "ClientboundSetObjectivePacket",
                 "to": "client",
                 "fields": [
@@ -3521,7 +3374,6 @@
                 ]
             },
             {
-                "id": "0x54",
                 "name": "ClientboundSetPassengersPacket",
                 "to": "client",
                 "fields": [
@@ -3542,7 +3394,6 @@
                 ]
             },
             {
-                "id": "0x55",
                 "name": "ClientboundSetPlayerTeamPacket",
                 "to": "client",
                 "fields": [
@@ -3627,7 +3478,6 @@
                 ]
             },
             {
-                "id": "0x56",
                 "name": "ClientboundSetScorePacket",
                 "to": "client",
                 "fields": [
@@ -3654,7 +3504,6 @@
                 ]
             },
             {
-                "id": "0x57",
                 "name": "ClientboundSetSimulationDistancePacket",
                 "to": "client",
                 "fields": [
@@ -3665,7 +3514,6 @@
                 ]
             },
             {
-                "id": "0x58",
                 "name": "ClientboundSetSubtitleTextPacket",
                 "to": "client",
                 "fields": [
@@ -3676,7 +3524,6 @@
                 ]
             },
             {
-                "id": "0x59",
                 "name": "ClientboundSetTimePacket",
                 "to": "client",
                 "fields": [
@@ -3691,7 +3538,6 @@
                 ]
             },
             {
-                "id": "0x5A",
                 "name": "ClientboundSetTitleTextPacket",
                 "to": "client",
                 "fields": [
@@ -3702,7 +3548,6 @@
                 ]
             },
             {
-                "id": "0x5B",
                 "name": "ClientboundSetTitlesAnimationPacket",
                 "to": "client",
                 "fields": [
@@ -3721,7 +3566,6 @@
                 ]
             },
             {
-                "id": "0x5C",
                 "name": "ClientboundSoundEntityPacket",
                 "to": "client",
                 "fields": [
@@ -3752,7 +3596,6 @@
                 ]
             },
             {
-                "id": "0x5D",
                 "name": "ClientboundSoundPacket",
                 "to": "client",
                 "fields": [
@@ -3791,7 +3634,6 @@
                 ]
             },
             {
-                "id": "0x5E",
                 "name": "ClientboundStopSoundPacket",
                 "to": "client",
                 "fields": [
@@ -3818,7 +3660,6 @@
                 ]
             },
             {
-                "id": "0x5F",
                 "name": "ClientboundSystemChatPacket",
                 "to": "client",
                 "fields": [
@@ -3833,7 +3674,6 @@
                 ]
             },
             {
-                "id": "0x60",
                 "name": "ClientboundTabListPacket",
                 "to": "client",
                 "fields": [
@@ -3848,7 +3688,6 @@
                 ]
             },
             {
-                "id": "0x61",
                 "name": "ClientboundTagQueryPacket",
                 "to": "client",
                 "fields": [
@@ -3863,7 +3702,6 @@
                 ]
             },
             {
-                "id": "0x62",
                 "name": "ClientboundTakeItemEntityPacket",
                 "to": "client",
                 "fields": [
@@ -3882,7 +3720,6 @@
                 ]
             },
             {
-                "id": "0x63",
                 "name": "ClientboundTeleportEntityPacket",
                 "to": "client",
                 "fields": [
@@ -3917,7 +3754,6 @@
                 ]
             },
             {
-                "id": "0x64",
                 "name": "ClientboundUpdateAdvancementsPacket",
                 "to": "client",
                 "fields": [
@@ -4086,7 +3922,6 @@
                 ]
             },
             {
-                "id": "0x65",
                 "name": "ClientboundUpdateAttributesPacket",
                 "to": "client",
                 "fields": [
@@ -4129,7 +3964,6 @@
                 ]
             },
             {
-                "id": "0x66",
                 "name": "ClientboundUpdateMobEffectPacket",
                 "to": "client",
                 "fields": [
@@ -4168,7 +4002,6 @@
                 ]
             },
             {
-                "id": "0x67",
                 "name": "ClientboundUpdateRecipesPacket",
                 "to": "client",
                 "fields": [
@@ -4198,7 +4031,6 @@
                 ]
             },
             {
-                "id": "0x68",
                 "name": "ClientboundUpdateTagsPacket",
                 "to": "client",
                 "fields": [
