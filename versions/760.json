@@ -1,6 +1,6 @@
 {
     "version": {
-        "protocol": 769,
+        "protocol": 760,
         "releases": ["1.19.1", "1.19.2"]
     },
     "packets": {
