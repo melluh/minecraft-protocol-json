@@ -1005,7 +1005,7 @@
                 "fields": [
                     {
                         "name": "id",
-                        "type": "varint"
+                        "type": "int"
                     }
                 ]
             },
@@ -2407,16 +2407,8 @@
                         }
                     },
                     {
-                        "name": "length",
-                        "type": "varint",
-                        "if": {
-                            "field": "columns",
-                            "not_equal": 0
-                        }
-                    },
-                    {
                         "name": "data",
-                        "type": "unsigned_byte_array",
+                        "type": "byte_array",
                         "if": {
                             "field": "columns",
                             "not_equal": 0
