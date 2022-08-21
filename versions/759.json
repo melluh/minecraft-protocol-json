@@ -115,7 +115,7 @@
                         "notes": "Also referred to as the shared secret."
                     },
                     {
-                        "name": "hasSaltSignaturePair",
+                        "name": "hasNonce",
                         "type": "boolean"
                     },
                     {
@@ -123,24 +123,24 @@
                         "type": "byte_array",
                         "notes": "Also referred to as the verify token.",
                         "if": {
-                            "field": "hasSaltSignaturePair",
-                            "equals": false
+                            "field": "hasNonce",
+                            "equals": true
                         }
                     },
                     {
                         "name": "salt",
                         "type": "long",
                         "if": {
-                            "field": "hasSaltSignaturePair",
-                            "equals": true
+                            "field": "hasNonce",
+                            "equals": false
                         }
                     },
                     {
                         "name": "signature",
                         "type": "byte_array",
                         "if": {
-                            "field": "hasSaltSignaturePair",
-                            "equals": true
+                            "field": "hasNonce",
+                            "equals": false
                         }
                     }
                 ]
