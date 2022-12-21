@@ -1,5 +1,9 @@
 [
     {
+        "protocol": 761,
+        "releases": ["1.19.3"]
+    },
+    {
         "protocol": 760,
         "releases": ["1.19.1", "1.19.2"]
     },

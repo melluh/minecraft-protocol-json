@@ -1,0 +1,4161 @@
+{
+    "version": {
+        "protocol": 761,
+        "releases": ["1.19.3"]
+    },
+    "packets": {
+        "handshaking": [
+            {
+                "name": "ClientIntentionPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "protocolVersion",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "hostName",
+                        "type": "string"
+                    },
+                    {
+                        "name": "port",
+                        "type": "short"
+                    },
+                    {
+                        "name": "intention",
+                        "type": "varint",
+                        "notes": "1 for status, 2 for login"
+                    }
+                ]
+            }
+        ],
+        "status": [
+            {
+                "name": "ServerboundStatusRequestPacket",
+                "to": "server",
+                "fields": []
+            },
+            {
+                "name": "ServerboundPingRequestPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "time",
+                        "type": "long"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundStatusResponsePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "status",
+                        "type": "string"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundPongResponsePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "time",
+                        "type": "long"
+                    }
+                ]
+            }
+        ],
+        "login": [
+            {
+                "name": "ServerboundHelloPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "hasProfileId",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "profileId",
+                        "type": "uuid"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundKeyPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "key",
+                        "type": "byte_array",
+                        "notes": "Also referred to as the shared secret."
+                    },
+                    {
+                        "name": "encryptedChallenge",
+                        "type": "byte_array",
+                        "notes": "Also referred to as the verify token."
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundCustomQueryPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "transactionId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "hasData",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "data",
+                        "type": "bytes",
+                        "if": {
+                            "field": "hasData",
+                            "equals": true
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundLoginDisconnectPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "reason",
+                        "type": "string"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundHelloPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "serverId",
+                        "type": "string"
+                    },
+                    {
+                        "name": "publicKey",
+                        "type": "byte_array"
+                    },
+                    {
+                        "name": "challenge",
+                        "type": "byte_array"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundGameProfilePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "uuid",
+                        "type": "uuid"
+                    },
+                    {
+                        "name": "name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "properties",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "type": "string"
+                            },
+                            {
+                                "name": "value",
+                                "type": "string"
+                            },
+                            {
+                                "name": "hasSignature",
+                                "type": "boolean"
+                            },
+                            {
+                                "name": "signature",
+                                "type": "string",
+                                "if": {
+                                    "field": "hasSignature",
+                                    "equals": true
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundLoginCompressionPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "compressionThreshold",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundCustomQueryPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "transactionId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "identifier",
+                        "type": "string"
+                    },
+                    {
+                        "name": "data",
+                        "type": "bytes"
+                    }
+                ]
+            }
+        ],
+        "play": [
+            {
+                "name": "ServerboundAcceptTeleportationPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "id",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundBlockEntityTagQuery",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "transactionId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "position",
+                        "type": "blockpos"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundChangeDifficultyPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "difficulty",
+                        "type": "byte"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundChatAckPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "offset",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundChatCommandPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "command",
+                        "type": "string"
+                    },
+                    {
+                        "name": "timestamp",
+                        "type": "long"
+                    },
+                    {
+                        "name": "salt",
+                        "type": "long"
+                    },
+                    {
+                        "name": "argumentSignatures",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "type": "string"
+                            },
+                            {
+                                "name": "signature",
+                                "type": "bytes",
+                                "length": 256
+                            }
+                        ]
+                    },
+                    {
+                        "name": "offset",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "acknowledged",
+                        "type": "bitset",
+                        "length": 20
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundChatPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "message",
+                        "type": "string"
+                    },
+                    {
+                        "name": "timestamp",
+                        "type": "long"
+                    },
+                    {
+                        "name": "salt",
+                        "type": "long"
+                    },
+                    {
+                        "name": "hasSignature",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "signature",
+                        "type": "bytes",
+                        "length": 256,
+                        "if": {
+                            "field": "hasSignature",
+                            "equals": true
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "acknowledged",
+                        "type": "bitset",
+                        "length": 20
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundClientCommandPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "action",
+                        "type": "enum",
+                        "values": [
+                            "PERFORM_RESPAWN",
+                            "REQUEST_STATS"
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundClientInformationPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "language",
+                        "type": "string"
+                    },
+                    {
+                        "name": "viewDistance",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "chatVisibility",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "chatColors",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "modelCustomisation",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "mainHand",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "textFilteringEnabled",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "allowsListing",
+                        "type": "boolean"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundCommandSuggestionPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "id",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "command",
+                        "type": "string"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundContainerButtonClickPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "containerId",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "buttonId",
+                        "type": "byte"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundContainerClickPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "containerId",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "stateId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "slotNum",
+                        "type": "short"
+                    },
+                    {
+                        "name": "buttonNum",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "clickType",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "changedSlots",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "slot",
+                                "type": "short"
+                            },
+                            {
+                                "name": "itemStack",
+                                "type": "item"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "carriedItem",
+                        "type": "item"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundContainerClosePacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "containerId",
+                        "type": "byte"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundCustomPayloadPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "identifier",
+                        "type": "string"
+                    },
+                    {
+                        "name": "data",
+                        "type": "bytes"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundEditBookPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "slot",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "pages",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "page",
+                                "type": "string"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "hasTitle",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "title",
+                        "type": "string",
+                        "if": {
+                            "field": "hasTitle",
+                            "equals": true
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundEntityTagQuery",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "transactionId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "entityId",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundInteractPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "entityId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "action",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "targetX",
+                        "type": "float",
+                        "if": {
+                            "field": "action",
+                            "equals": 2
+                        }
+                    },
+                    {
+                        "name": "targetY",
+                        "type": "float",
+                        "if": {
+                            "field": "action",
+                            "equals": 2
+                        }
+                    },
+                    {
+                        "name": "targetZ",
+                        "type": "float",
+                        "if": {
+                            "field": "action",
+                            "equals": 2
+                        }
+                    },
+                    {
+                        "name": "hand",
+                        "type": "varint",
+                        "if": {
+                            "field": "action",
+                            "equals": [0, 2]
+                        }
+                    },
+                    {
+                        "name": "usingSecondaryAction",
+                        "type": "boolean",
+                        "notes": "This is set to true when the player is sneaking."
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundJigsawGeneratePacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "position",
+                        "type": "blockpos"
+                    },
+                    {
+                        "name": "levels",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "keepJigsaws",
+                        "type": "boolean"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundKeepAlivePacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "id",
+                        "type": "long"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundLockDifficultyPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "locked",
+                        "type": "boolean"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundMovePlayerPacket.Pos",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "x",
+                        "type": "double"
+                    },
+                    {
+                        "name": "y",
+                        "type": "double"
+                    },
+                    {
+                        "name": "z",
+                        "type": "double"
+                    },
+                    {
+                        "name": "onGround",
+                        "type": "byte"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundMovePlayerPacket.PosRot",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "x",
+                        "type": "double"
+                    },
+                    {
+                        "name": "y",
+                        "type": "double"
+                    },
+                    {
+                        "name": "z",
+                        "type": "double"
+                    },
+                    {
+                        "name": "yRot",
+                        "type": "float"
+                    },
+                    {
+                        "name": "xRot",
+                        "type": "float"
+                    },
+                    {
+                        "name": "onGround",
+                        "type": "byte"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundMovePlayerPacket.Rot",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "yRot",
+                        "type": "float"
+                    },
+                    {
+                        "name": "xRot",
+                        "type": "float"
+                    },
+                    {
+                        "name": "onGround",
+                        "type": "byte"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundMovePlayerPacket.StatusOnly",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "onGround",
+                        "type": "byte"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundMoveVehiclePacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "x",
+                        "type": "double"
+                    },
+                    {
+                        "name": "y",
+                        "type": "double"
+                    },
+                    {
+                        "name": "z",
+                        "type": "double"
+                    },
+                    {
+                        "name": "yRot",
+                        "type": "float"
+                    },
+                    {
+                        "name": "xRot",
+                        "type": "float"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundPaddleBoatPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "left",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "right",
+                        "type": "boolean"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundPickItemPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "slot",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundPlaceRecipePacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "containerId",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "recipe",
+                        "type": "string"
+                    },
+                    {
+                        "name": "shiftDown",
+                        "type": "boolean"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundPlayerAbilitiesPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "flags",
+                        "type": "byte"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundPlayerActionPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "action",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "position",
+                        "type": "blockpos"
+                    },
+                    {
+                        "name": "direction",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "sequence",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundPlayerCommandPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "id",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "action",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "data",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundPlayerInputPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "xxa",
+                        "type": "float"
+                    },
+                    {
+                        "name": "zza",
+                        "type": "float"
+                    },
+                    {
+                        "name": "flags",
+                        "type": "byte"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundPongPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "id",
+                        "type": "int"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundChatSessionUpdatePacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "sessionId",
+                        "type": "uuid"
+                    },
+                    {
+                        "name": "publicKeyExpiresAt",
+                        "type": "long"
+                    },
+                    {
+                        "name": "publicKey",
+                        "type": "byte_array"
+                    },
+                    {
+                        "name": "publicKeySignature",
+                        "type": "byte_array"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundRecipeBookChangeSettingsPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "bookType",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "isOpen",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "isFiltering",
+                        "type": "boolean"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundRecipeBookSeenRecipePacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "recipe",
+                        "type": "string"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundRenameItemPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "name",
+                        "type": "string"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundResourcePackPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "action",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundSeenAdvancementsPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "action",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "tab",
+                        "type": "string",
+                        "if": {
+                            "field": "action",
+                            "equals": 0
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundSelectTradePacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "item",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundSetBeaconPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "hasPrimary",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "primary",
+                        "type": "varint",
+                        "if": {
+                            "field": "hasPrimary",
+                            "equals": true
+                        }
+                    },
+                    {
+                        "name": "hasSecondary",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "secondary",
+                        "type": "varint",
+                        "if": {
+                            "field": "hasSecondary",
+                            "equals": true
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundSetCarriedItemPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "slot",
+                        "type": "short"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundSetCommandBlockPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "position",
+                        "type": "blockpos"
+                    },
+                    {
+                        "name": "command",
+                        "type": "string"
+                    },
+                    {
+                        "name": "mode",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "flags",
+                        "type": "byte"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundSetCommandMinecartPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "entityId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "command",
+                        "type": "string"
+                    },
+                    {
+                        "name": "trackOutput",
+                        "type": "boolean"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundSetCreativeModeSlotPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "slot",
+                        "type": "short"
+                    },
+                    {
+                        "name": "itemStack",
+                        "type": "item"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundSetJigsawBlockPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "position",
+                        "type": "blockpos"
+                    },
+                    {
+                        "name": "name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "target",
+                        "type": "string"
+                    },
+                    {
+                        "name": "pool",
+                        "type": "string"
+                    },
+                    {
+                        "name": "finalState",
+                        "type": "string"
+                    },
+                    {
+                        "name": "joint",
+                        "type": "string"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundSetStructureBlockPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "position",
+                        "type": "blockpos"
+                    },
+                    {
+                        "name": "updateType",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "mode",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "offsetX",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "offsetY",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "offsetZ",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "sizeX",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "sizeY",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "sizeZ",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "mirror",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "rotation",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "data",
+                        "type": "string"
+                    },
+                    {
+                        "name": "integrity",
+                        "type": "float"
+                    },
+                    {
+                        "name": "seed",
+                        "type": "varlong"
+                    },
+                    {
+                        "name": "flags",
+                        "type": "byte"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundSignUpdatePacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "position",
+                        "type": "blockpos"
+                    },
+                    {
+                        "name": "line1",
+                        "type": "string"
+                    },
+                    {
+                        "name": "line2",
+                        "type": "string"
+                    },
+                    {
+                        "name": "line3",
+                        "type": "string"
+                    },
+                    {
+                        "name": "line4",
+                        "type": "string"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundSwingPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "hand",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundTeleportToEntityPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "uuid",
+                        "type": "uuid"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundUseItemOnPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "hand",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "position",
+                        "type": "blockpos"
+                    },
+                    {
+                        "name": "direction",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "cursorX",
+                        "type": "float"
+                    },
+                    {
+                        "name": "cursorY",
+                        "type": "float"
+                    },
+                    {
+                        "name": "cursorZ",
+                        "type": "float"
+                    },
+                    {
+                        "name": "insideBlock",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "sequence",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "name": "ServerboundUseItemPacket",
+                "to": "server",
+                "fields": [
+                    {
+                        "name": "hand",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "sequence",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundAddEntityPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "id",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "uuid",
+                        "type": "uuid"
+                    },
+                    {
+                        "name": "type",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "x",
+                        "type": "double"
+                    },
+                    {
+                        "name": "y",
+                        "type": "double"
+                    },
+                    {
+                        "name": "z",
+                        "type": "double"
+                    },
+                    {
+                        "name": "xRot",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "yRot",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "yHeadRot",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "data",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "xa",
+                        "type": "short"
+                    },
+                    {
+                        "name": "ya",
+                        "type": "short"
+                    },
+                    {
+                        "name": "za",
+                        "type": "short"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundAddExperienceOrbPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "id",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "x",
+                        "type": "double"
+                    },
+                    {
+                        "name": "y",
+                        "type": "double"
+                    },
+                    {
+                        "name": "z",
+                        "type": "double"
+                    },
+                    {
+                        "name": "value",
+                        "type": "short"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundAddPlayerPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "entityId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "uuid",
+                        "type": "uuid"
+                    },
+                    {
+                        "name": "x",
+                        "type": "double"
+                    },
+                    {
+                        "name": "y",
+                        "type": "double"
+                    },
+                    {
+                        "name": "z",
+                        "type": "double"
+                    },
+                    {
+                        "name": "xRot",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "yRot",
+                        "type": "byte"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundAnimatePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "entityId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "action",
+                        "type": "ubyte"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundAwardStatsPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "stats",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "category",
+                                "type": "varint"
+                            },
+                            {
+                                "name": "statistic",
+                                "type": "varint"
+                            },
+                            {
+                                "name": "value",
+                                "type": "varint"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundBlockChangedAckPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "sequence",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundBlockDestructionPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "id",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "position",
+                        "type": "blockpos"
+                    },
+                    {
+                        "name": "progress",
+                        "type": "byte"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundBlockEntityDataPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "position",
+                        "type": "blockpos"
+                    },
+                    {
+                        "name": "type",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "tag",
+                        "type": "nbt"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundBlockEventPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "position",
+                        "type": "blockpos"
+                    },
+                    {
+                        "name": "actionId",
+                        "type": "ubyte"
+                    },
+                    {
+                        "name": "actionParameter",
+                        "type": "ubyte"
+                    },
+                    {
+                        "name": "blockId",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundBlockUpdatePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "position",
+                        "type": "blockpos"
+                    },
+                    {
+                        "name": "blockStateId",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundBossEventPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "uuid",
+                        "type": "uuid"
+                    },
+                    {
+                        "name": "action",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "name",
+                        "type": "string",
+                        "if": {
+                            "field": "action",
+                            "equals": [0, 3]
+                        }
+                    },
+                    {
+                        "name": "progress",
+                        "type": "float",
+                        "if": {
+                            "field": "action",
+                            "equals": [0, 2]
+                        }
+                    },
+                    {
+                        "name": "color",
+                        "type": "varint",
+                        "if": {
+                            "field": "action",
+                            "equals": [0, 4]
+                        }
+                    },
+                    {
+                        "name": "overlay",
+                        "type": "varint",
+                        "if": {
+                            "field": "action",
+                            "equals": [0, 4]
+                        }
+                    },
+                    {
+                        "name": "flags",
+                        "type": "byte",
+                        "if": {
+                            "field": "action",
+                            "equals": [0, 5]
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundChangeDifficultyPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "difficulty",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "locked",
+                        "type": "boolean"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundClearTitlesPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "resetTimes",
+                        "type": "boolean"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundCommandSuggestionsPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "id",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "rangeStart",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "rangeEnd",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "suggestions",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "text",
+                                "type": "string"
+                            },
+                            {
+                                "name": "hasTooltip",
+                                "type": "boolean"
+                            },
+                            {
+                                "name": "tooltip",
+                                "type": "string",
+                                "if": {
+                                    "field": "hasTooltip",
+                                    "equals": true
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundCommandsPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "todo",
+                        "type": "bytes"
+                    }
+                ],
+                "notes": "todo"
+            },
+            {
+                "name": "ClientboundContainerClosePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "containerId",
+                        "type": "byte"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundContainerSetContentPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "containerId",
+                        "type": "ubyte"
+                    },
+                    {
+                        "name": "stateId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "items",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "itemStack",
+                                "type": "item"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "carriedItem",
+                        "type": "item"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundContainerSetDataPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "containerId",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "id",
+                        "type": "short"
+                    },
+                    {
+                        "name": "value",
+                        "type": "short"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundContainerSetSlotPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "containerId",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "stateId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "slot",
+                        "type": "short"
+                    },
+                    {
+                        "name": "itemStack",
+                        "type": "item"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundCooldownPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "item",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "duration",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundCustomChatCompletionsPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "action",
+                        "type": "varint",
+                        "notes": "0: ADD, 1: REMOVE, 2: SET"
+                    },
+                    {
+                        "name": "entries",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "entry",
+                                "type": "string"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundCustomPayloadPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "identifier",
+                        "type": "string"
+                    },
+                    {
+                        "name": "data",
+                        "type": "bytes"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundDeleteChatPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "signature",
+                        "type": "byte_array"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundDisconnectPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "reason",
+                        "type": "string"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundDisguisedChatPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "content",
+                        "type": "string"
+                    },
+                    {
+                        "name": "chatType",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "hasTargetName",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "targetName",
+                        "type": "string",
+                        "if": {
+                            "field": "hasTargetName",
+                            "equals": true
+                        }
+                    }
+                ]  
+            },
+            {
+                "name": "ClientboundEntityEventPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "entityId",
+                        "type": "int"
+                    },
+                    {
+                        "name": "eventId",
+                        "type": "byte"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundExplodePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "x",
+                        "type": "double"
+                    },
+                    {
+                        "name": "y",
+                        "type": "double"
+                    },
+                    {
+                        "name": "z",
+                        "type": "double"
+                    },
+                    {
+                        "name": "power",
+                        "type": "float"
+                    },
+                    {
+                        "name": "toBlow",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "dX",
+                                "type": "byte"
+                            },
+                            {
+                                "name": "dY",
+                                "type": "byte"
+                            },
+                            {
+                                "name": "dZ",
+                                "type": "byte"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "knockbackX",
+                        "type": "float"
+                    },
+                    {
+                        "name": "knockbackY",
+                        "type": "float"
+                    },
+                    {
+                        "name": "knockbackZ",
+                        "type": "float"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundForgetLevelChunkPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "x",
+                        "type": "int"
+                    },
+                    {
+                        "name": "z",
+                        "type": "int"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundGameEventPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "eventId",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "param",
+                        "type": "float"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundHorseScreenOpenPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "containerId",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "size",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "entityId",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundInitializeBorderPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "newCenterX",
+                        "type": "double"
+                    },
+                    {
+                        "name": "newCenterZ",
+                        "type": "double"
+                    },
+                    {
+                        "name": "oldSize",
+                        "type": "double"
+                    },
+                    {
+                        "name": "newSize",
+                        "type": "double"
+                    },
+                    {
+                        "name": "lerpTime",
+                        "type": "varlong"
+                    },
+                    {
+                        "name": "newAbsoluteMaxSize",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "warningBlocks",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "warningTime",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundKeepAlivePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "id",
+                        "type": "long"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundLevelChunkWithLightPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "todo",
+                        "type": "bytes"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundLevelEventPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "type",
+                        "type": "int"
+                    },
+                    {
+                        "name": "position",
+                        "type": "blockpos"
+                    },
+                    {
+                        "name": "data",
+                        "type": "int"
+                    },
+                    {
+                        "name": "globalEvent",
+                        "type": "boolean"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundLevelParticlesPacket",
+                "to": "client",
+                "notes": "todo",
+                "fields": [
+                    {
+                        "name": "todo",
+                        "type": "bytes"
+                    }
+                ],
+                "fields_todo": [
+                    {
+                        "name": "id",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "overrideLimiter",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "x",
+                        "type": "double"
+                    },
+                    {
+                        "name": "y",
+                        "type": "double"
+                    },
+                    {
+                        "name": "z",
+                        "type": "double"
+                    },
+                    {
+                        "name": "xDist",
+                        "type": "float"
+                    },
+                    {
+                        "name": "yDist",
+                        "type": "float"
+                    },
+                    {
+                        "name": "zDist",
+                        "type": "float"
+                    },
+                    {
+                        "name": "maxSpeed",
+                        "type": "float"
+                    },
+                    {
+                        "name": "count",
+                        "type": "int"
+                    },
+                    {
+                        "name": "todo"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundLightUpdatePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "todo",
+                        "type": "bytes"
+                    }
+                ],
+                "fields_todo": [
+                    {
+                        "name": "x",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "y",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "lightData",
+                        "type": "light",
+                        "notes": "todo"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundLoginPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "entityId",
+                        "type": "int"
+                    },
+                    {
+                        "name": "hardcore",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "gameType",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "previousGameType",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "levels",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "level",
+                                "type": "string"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "registryCodec",
+                        "type": "nbt"
+                    },
+                    {
+                        "name": "dimensionType",
+                        "type": "string"
+                    },
+                    {
+                        "name": "dimension",
+                        "type": "string"
+                    },
+                    {
+                        "name": "seed",
+                        "type": "long"
+                    },
+                    {
+                        "name": "maxPlayers",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "chunkRadius",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "simulationDistance",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "reducedDebugInfo",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "showDeathScreen",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "isDebug",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "isFlat",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "hasLastDeathLocation",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "lastDeathLocationDimension",
+                        "type": "string",
+                        "if": {
+                            "field": "hasLastDeathLocation",
+                            "equals": true
+                        }
+                    },
+                    {
+                        "name": "lastDeathLocation",
+                        "type": "blockpos",
+                        "if": {
+                            "field": "hasLastDeathLocation",
+                            "equals": true
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundMapItemDataPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "mapId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "scale",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "locked",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "hasDecorations",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "decorations",
+                        "type": "collection",
+                        "if": {
+                            "field": "hasDecorations",
+                            "equals": true
+                        },
+                        "fields": [
+                            {
+                                "name": "type",
+                                "type": "varint"
+                            },
+                            {
+                                "name": "x",
+                                "type": "byte"
+                            },
+                            {
+                                "name": "z",
+                                "type": "byte"
+                            },
+                            {
+                                "name": "direction",
+                                "type": "byte"
+                            },
+                            {
+                                "name": "hasDisplayName",
+                                "type": "boolean"
+                            },
+                            {
+                                "name": "displayName",
+                                "type": "string",
+                                "if": {
+                                    "field": "hasDisplayName",
+                                    "equals": true
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "name": "columns",
+                        "type": "ubyte"
+                    },
+                    {
+                        "name": "rows",
+                        "type": "ubyte",
+                        "if": {
+                            "field": "columns",
+                            "not_equal": 0
+                        }
+                    },
+                    {
+                        "name": "x",
+                        "type": "byte",
+                        "if": {
+                            "field": "columns",
+                            "not_equal": 0
+                        }
+                    },
+                    {
+                        "name": "z",
+                        "type": "byte",
+                        "if": {
+                            "field": "columns",
+                            "not_equal": 0
+                        }
+                    },
+                    {
+                        "name": "data",
+                        "type": "byte_array",
+                        "if": {
+                            "field": "columns",
+                            "not_equal": 0
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundMerchantOffersPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "containerId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "offers",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "baseCostA",
+                                "type": "item"
+                            },
+                            {
+                                "name": "result",
+                                "type": "item"
+                            },
+                            {
+                                "name": "costB",
+                                "type": "item"
+                            },
+                            {
+                                "name": "isOutOfStock",
+                                "type": "boolean"
+                            },
+                            {
+                                "name": "uses",
+                                "type": "int"
+                            },
+                            {
+                                "name": "maxUses",
+                                "type": "int"
+                            },
+                            {
+                                "name": "xp",
+                                "type": "int"
+                            },
+                            {
+                                "name": "specialPriceDiff",
+                                "type": "int"
+                            },
+                            {
+                                "name": "priceMultiplier",
+                                "type": "float"
+                            },
+                            {
+                                "name": "demand",
+                                "type": "int"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "villagerLevel",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "villagerXp",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "showProgress",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "canRestock",
+                        "type": "boolean"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundMoveEntityPacket.Pos",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "entityId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "dX",
+                        "type": "short"
+                    },
+                    {
+                        "name": "dY",
+                        "type": "short"
+                    },
+                    {
+                        "name": "dZ",
+                        "type": "short"
+                    },
+                    {
+                        "name": "onGround",
+                        "type": "boolean"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundMoveEntityPacket.PosRot",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "entityId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "dX",
+                        "type": "short"
+                    },
+                    {
+                        "name": "dY",
+                        "type": "short"
+                    },
+                    {
+                        "name": "dZ",
+                        "type": "short"
+                    },
+                    {
+                        "name": "yRot",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "xRot",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "onGround",
+                        "type": "boolean"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundMoveEntityPacket.Rot",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "entityId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "yRot",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "xRot",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "onGround",
+                        "type": "boolean"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundMoveVehiclePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "x",
+                        "type": "double"
+                    },
+                    {
+                        "name": "y",
+                        "type": "double"
+                    },
+                    {
+                        "name": "z",
+                        "type": "double"
+                    },
+                    {
+                        "name": "yRot",
+                        "type": "float"
+                    },
+                    {
+                        "name": "xRot",
+                        "type": "float"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundOpenBookPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "hand",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundOpenScreenPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "containerId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "type",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "title",
+                        "type": "string"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundOpenSignEditorPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "position",
+                        "type": "blockpos"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundPingPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "id",
+                        "type": "int"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundPlaceGhostRecipePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "containerId",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "recipe",
+                        "type": "string"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundPlayerAbilitiesPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "flags",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "flyingSpeed",
+                        "type": "float"
+                    },
+                    {
+                        "name": "walkingSpeed",
+                        "type": "float"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundPlayerChatPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "sender",
+                        "type": "uuid"
+                    },
+                    {
+                        "name": "index",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "hasSignature",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "signature",
+                        "type": "bytes",
+                        "length": 256,
+                        "if": {
+                            "field": "hasSignature",
+                            "equals": true
+                        }
+                    },
+                    {
+                        "name": "content",
+                        "type": "string"
+                    },
+                    {
+                        "name": "timestamp",
+                        "type": "long"
+                    },
+                    {
+                        "name": "salt",
+                        "type": "long"
+                    },
+                    {
+                        "name": "lastSeenMessages",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "type": "varint"
+                            },
+                            {
+                                "name": "fullSignature",
+                                "type": "bytes",
+                                "length": 256,
+                                "if": {
+                                    "field": "id",
+                                    "equals": 0
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "name": "hasUnsignedContent",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "unsignedContent",
+                        "type": "string",
+                        "if": {
+                            "field": "hasUnsignedContent",
+                            "equals": true
+                        }
+                    },
+                    {
+                        "name": "filterMaskType",
+                        "type": "varint",
+                        "notes": "0: PASS_THROUGH, 1: FULLY_FILTERED, 2: PARTIALLY_FILTERED"
+                    },
+                    {
+                        "name": "filterMask",
+                        "type": "long_array",
+                        "if": {
+                            "field": "filterMaskType",
+                            "equals": 2
+                        }
+                    },
+                    {
+                        "name": "chatType",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "hasTargetName",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "targetName",
+                        "type": "string",
+                        "if": {
+                            "field": "hasTargetName",
+                            "equals": true
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundPlayerCombatEndPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "duration",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "killerId",
+                        "type": "int"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundPlayerCombatEnterPacket",
+                "to": "client",
+                "fields": []
+            },
+            {
+                "name": "ClientboundPlayerCombatKillPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "playerId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "killerId",
+                        "type": "int"
+                    },
+                    {
+                        "name": "message",
+                        "type": "string"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundPlayerInfoRemovePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "profileIds",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "profileId",
+                                "type": "uuid"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundPlayerInfoUpdatePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "actions",
+                        "type": "enum_set",
+                        "values": [
+                            "ADD_PLAYER",
+                            "INITIALIZE_CHAT",
+                            "UPDATE_GAME_MODE",
+                            "UPDATE_LISTED",
+                            "UPDATE_LATENCY",
+                            "UPDATE_DISPLAY_NAME"
+                        ]
+                    },
+                    {
+                        "name": "entries",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "profileId",
+                                "type": "uuid"
+                            },
+                            {
+                                "name": "profileName",
+                                "type": "string",
+                                "if": {
+                                    "field": "../actions",
+                                    "contains": "ADD_PLAYER"
+                                }
+                            },
+                            {
+                                "name": "gameProfileProperties",
+                                "type": "collection",
+                                "fields": [
+                                    {
+                                        "name": "name",
+                                        "type": "string"
+                                    },
+                                    {
+                                        "name": "value",
+                                        "type": "string"
+                                    },
+                                    {
+                                        "name": "hasSignature",
+                                        "type": "boolean"
+                                    },
+                                    {
+                                        "name": "signature",
+                                        "type": "string",
+                                        "if": {
+                                            "field": "hasSignature",
+                                            "equals": true
+                                        }
+                                    }
+                                ],
+                                "if": {
+                                    "field": "../actions",
+                                    "contains": "ADD_PLAYER"
+                                }
+                            },
+                            {
+                                "name": "hasChatSession",
+                                "type": "boolean",
+                                "if": {
+                                    "field": "../actions",
+                                    "contains": "INITIALIZE_CHAT"
+                                }
+                            },
+                            {
+                                "name": "sessionId",
+                                "type": "uuid",
+                                "if": {
+                                    "field": "hasChatSession",
+                                    "equals": true
+                                }
+                            },
+                            {
+                                "name": "publicKeyExpiresAt",
+                                "type": "long",
+                                "if": {
+                                    "field": "hasChatSession",
+                                    "equals": true
+                                }
+                            },
+                            {
+                                "name": "publicKey",
+                                "type": "byte_array",
+                                "if": {
+                                    "field": "hasChatSession",
+                                    "equals": true
+                                }
+                            },
+                            {
+                                "name": "publicKeySignature",
+                                "type": "byte_array",
+                                "if": {
+                                    "field": "hasChatSession",
+                                    "equals": true
+                                }
+                            },
+                            {
+                                "name": "gamemode",
+                                "type": "enum",
+                                "values": [
+                                    "SURVIVAL",
+                                    "CREATIVE",
+                                    "ADVENTURE",
+                                    "SPECTATOR"
+                                ],
+                                "if": {
+                                    "field": "../actions",
+                                    "contains": "UPDATE_GAME_MODE"
+                                }
+                            },
+                            {
+                                "name": "listed",
+                                "type": "boolean",
+                                "if": {
+                                    "field": "../actions",
+                                    "contains": "UPDATE_LISTED"
+                                }
+                            },
+                            {
+                                "name": "latency",
+                                "type": "varint",
+                                "if": {
+                                    "field": "../actions",
+                                    "contains": "UPDATE_LATENCY"
+                                }
+                            },
+                            {
+                                "name": "hasDisplayName",
+                                "type": "boolean",
+                                "if": {
+                                    "field": "../actions",
+                                    "contains": "UPDATE_DISPLAY_NAME"
+                                }
+                            },
+                            {
+                                "name": "displayName",
+                                "type": "string",
+                                "if": {
+                                    "field": "hasDisplayName",
+                                    "equals": true
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundPlayerLookAtPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "fromAnchor",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "x",
+                        "type": "double"
+                    },
+                    {
+                        "name": "y",
+                        "type": "double"
+                    },
+                    {
+                        "name": "z",
+                        "type": "double"
+                    },
+                    {
+                        "name": "atEntity",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "entity",
+                        "type": "varint",
+                        "if": {
+                            "field": "atEntity",
+                            "equals": true
+                        }
+                    },
+                    {
+                        "name": "toAnchor",
+                        "type": "varint",
+                        "if": {
+                            "field": "atEntity",
+                            "equals": true
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundPlayerPositionPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "x",
+                        "type": "double"
+                    },
+                    {
+                        "name": "y",
+                        "type": "double"
+                    },
+                    {
+                        "name": "z",
+                        "type": "double"
+                    },
+                    {
+                        "name": "yRot",
+                        "type": "float"
+                    },
+                    {
+                        "name": "xRot",
+                        "type": "float"
+                    },
+                    {
+                        "name": "relativeArguments",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "id",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "dismountVehicle",
+                        "type": "boolean"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundRecipePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "state",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "craftingOpen",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "craftingFiltering",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "furnaceOpen",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "furnaceFiltering",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "blastFurnaceOpen",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "blastFurnaceFiltering",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "smokerOpen",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "smokerFiltering",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "recipes",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "recipeId",
+                                "type": "string"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "toHighlight",
+                        "type": "collection",
+                        "if": {
+                            "field": "state",
+                            "equals": 0
+                        },
+                        "fields": [
+                            {
+                                "name": "recipeId",
+                                "type": "string"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundRemoveEntitiesPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "entityIds",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "entityId",
+                                "type": "varint"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundRemoveMobEffectPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "entityId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "effect",
+                        "type": "int"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundResourcePackPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "url",
+                        "type": "string"
+                    },
+                    {
+                        "name": "hash",
+                        "type": "string"
+                    },
+                    {
+                        "name": "required",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "hasPrompt",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "prompt",
+                        "type": "string",
+                        "if": {
+                            "field": "hasPrompt",
+                            "equals": true
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundRespawnPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "dimensionType",
+                        "type": "string"
+                    },
+                    {
+                        "name": "dimension",
+                        "type": "string"
+                    },
+                    {
+                        "name": "seed",
+                        "type": "long"
+                    },
+                    {
+                        "name": "gameType",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "previousGameType",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "isDebug",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "isFlat",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "dataToKeep",
+                        "type": "byte",
+                        "notes": "0x00: KEEP_ATTRIBUTES, 0x01: KEEP_ENTITY_DATA, 0x02: KEEP_ALL_DATA"
+                    },
+                    {
+                        "name": "hasLastDeathLocation",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "lastDeathLocationDimension",
+                        "type": "string",
+                        "if": {
+                            "field": "hasLastDeathLocation",
+                            "equals": true
+                        }
+                    },
+                    {
+                        "name": "lastDeathLocation",
+                        "type": "blockpos",
+                        "if": {
+                            "field": "hasLastDeathLocation",
+                            "equals": true
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundRotateHeadPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "entityId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "yHeadRot",
+                        "type": "byte"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundSectionBlocksUpdatePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "sectionPos",
+                        "type": "long"
+                    },
+                    {
+                        "name": "suppressLightUpdates",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "blocks",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "block",
+                                "type": "varlong"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundSelectAdvancementsTabPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "hasTab",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "tab",
+                        "type": "string",
+                        "if": {
+                            "field": "hasTab",
+                            "equals": true
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundServerDataPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "hasMotd",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "motd",
+                        "type": "string",
+                        "if": {
+                            "field": "hasMotd",
+                            "equals": true
+                        }
+                    },
+                    {
+                        "name": "hasIcon",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "iconBase64",
+                        "type": "string",
+                        "if": {
+                            "field": "hasIcon",
+                            "equals": true
+                        }
+                    },
+                    {
+                        "name": "enforcesSecureChat",
+                        "type": "boolean"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundSetActionBarTextPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "text",
+                        "type": "string"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundSetBorderCenterPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "newCenterX",
+                        "type": "double"
+                    },
+                    {
+                        "name": "newCenterZ",
+                        "type": "double"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundSetBorderLerpSizePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "oldSize",
+                        "type": "double"
+                    },
+                    {
+                        "name": "newSize",
+                        "type": "double"
+                    },
+                    {
+                        "name": "lerpTime",
+                        "type": "varlong"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundSetBorderSizePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "size",
+                        "type": "double"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundSetBorderWarningDelayPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "warningDelay",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundSetBorderWarningDistancePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "warningBlocks",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundSetCameraPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "cameraId",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundSetCarriedItemPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "slot",
+                        "type": "byte"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundSetChunkCacheCenterPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "x",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "z",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundSetChunkCacheRadiusPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "radius",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundSetDefaultSpawnPositionPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "position",
+                        "type": "blockpos"
+                    },
+                    {
+                        "name": "angle",
+                        "type": "float"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundSetDisplayObjectivePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "slot",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "objectiveName",
+                        "type": "string"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundSetEntityDataPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "todo",
+                        "type": "bytes"
+                    }
+                ],
+                "notes": "todo"
+            },
+            {
+                "name": "ClientboundSetEntityLinkPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "sourceId",
+                        "type": "int"
+                    },
+                    {
+                        "name": "destId",
+                        "type": "int"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundSetEntityMotionPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "id",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "xa",
+                        "type": "short"
+                    },
+                    {
+                        "name": "ya",
+                        "type": "short"
+                    },
+                    {
+                        "name": "za",
+                        "type": "short"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundSetEquipmentPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "todo",
+                        "type": "bytes"
+                    }
+                ],
+                "notes": "todo"
+            },
+            {
+                "name": "ClientboundSetExperiencePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "experienceProgress",
+                        "type": "float"
+                    },
+                    {
+                        "name": "experienceLevel",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "totalExperience",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundSetHealthPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "health",
+                        "type": "float"
+                    },
+                    {
+                        "name": "food",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "saturation",
+                        "type": "float"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundSetObjectivePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "objectiveName",
+                        "type": "string"
+                    },
+                    {
+                        "name": "method",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "displayName",
+                        "type": "string",
+                        "if": {
+                            "field": "method",
+                            "equals": [0, 2]
+                        }
+                    },
+                    {
+                        "name": "renderType",
+                        "type": "varint",
+                        "if": {
+                            "field": "method",
+                            "equals": [0, 2]
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundSetPassengersPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "vehicle",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "passengers",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "passengerId",
+                                "type": "varint"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundSetPlayerTeamPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "method",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "displayname",
+                        "type": "string",
+                        "if": {
+                            "field": "method",
+                            "equals": [0, 2]
+                        }
+                    },
+                    {
+                        "name": "friendlyFlags",
+                        "type": "byte",
+                        "if": {
+                            "field": "method",
+                            "equals": [0, 2]
+                        }
+                    },
+                    {
+                        "name": "nameTagVisibility",
+                        "type": "string",
+                        "if": {
+                            "field": "method",
+                            "equals": [0, 2]
+                        }
+                    },
+                    {
+                        "name": "collisionRule",
+                        "type": "string",
+                        "if": {
+                            "field": "method",
+                            "equals": [0, 2]
+                        }
+                    },
+                    {
+                        "name": "color",
+                        "type": "varint",
+                        "if": {
+                            "field": "method",
+                            "equals": [0, 2]
+                        }
+                    },
+                    {
+                        "name": "prefix",
+                        "type": "string",
+                        "if": {
+                            "field": "method",
+                            "equals": [0, 2]
+                        }
+                    },
+                    {
+                        "name": "suffix",
+                        "type": "string",
+                        "if": {
+                            "field": "method",
+                            "equals": [0, 2]
+                        }
+                    },
+                    {
+                        "name": "entities",
+                        "type": "collection",
+                        "if": {
+                            "field": "method",
+                            "equals": [0, 3, 4]
+                        },
+                        "fields": [
+                            {
+                                "name": "entity",
+                                "type": "string"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundSetScorePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "owner",
+                        "type": "string"
+                    },
+                    {
+                        "name": "method",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "objectiveName",
+                        "type": "string"
+                    },
+                    {
+                        "name": "score",
+                        "type": "varint",
+                        "if": {
+                            "field": "method",
+                            "not_equal": 1
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundSetSimulationDistancePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "simulationDistance",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundSetSubtitleTextPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "text",
+                        "type": "string"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundSetTimePacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "gameTime",
+                        "type": "long"
+                    },
+                    {
+                        "name": "dayTime",
+                        "type": "long"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundSetTitleTextPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "text",
+                        "type": "string"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundSetTitlesAnimationPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "fadeIn",
+                        "type": "int"
+                    },
+                    {
+                        "name": "stay",
+                        "type": "int"
+                    },
+                    {
+                        "name": "fadeOut",
+                        "type": "int"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundSoundEntityPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "sound",
+                        "type": "string"
+                    },
+                    {
+                        "name": "source",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "id",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "volume",
+                        "type": "float"
+                    },
+                    {
+                        "name": "pitch",
+                        "type": "float"
+                    },
+                    {
+                        "name": "seed",
+                        "type": "long"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundSoundPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "sound",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "source",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "x",
+                        "type": "int"
+                    },
+                    {
+                        "name": "y",
+                        "type": "int"
+                    },
+                    {
+                        "name": "z",
+                        "type": "int"
+                    },
+                    {
+                        "name": "volume",
+                        "type": "float"
+                    },
+                    {
+                        "name": "pitch",
+                        "type": "float"
+                    },
+                    {
+                        "name": "seed",
+                        "type": "long"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundStopSoundPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "flags",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "source",
+                        "type": "varint",
+                        "if": {
+                            "field": "flags",
+                            "bitmask": "0x01"
+                        }
+                    },
+                    {
+                        "name": "sound",
+                        "type": "string",
+                        "if": {
+                            "field": "flags",
+                            "bitmask": "0x02"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundSystemChatPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "content",
+                        "type": "string"
+                    },
+                    {
+                        "name": "overlay",
+                        "type": "boolean",
+                        "notes": "Controls whether this message is shown in the chat box or the action bar."
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundTabListPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "header",
+                        "type": "string"
+                    },
+                    {
+                        "name": "footer",
+                        "type": "string"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundTagQueryPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "transactionId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "tag",
+                        "type": "nbt"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundTakeItemEntityPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "itemId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "entityId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "amount",
+                        "type": "varint"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundTeleportEntityPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "id",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "x",
+                        "type": "double"
+                    },
+                    {
+                        "name": "y",
+                        "type": "double"
+                    },
+                    {
+                        "name": "z",
+                        "type": "double"
+                    },
+                    {
+                        "name": "yRot",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "xRot",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "onGround",
+                        "type": "boolean"
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundUpdateAdvancementsPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "reset",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "added",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "type": "string"
+                            },
+                            {
+                                "name": "hasParent",
+                                "type": "boolean"
+                            },
+                            {
+                                "name": "parentId",
+                                "type": "string",
+                                "if": {
+                                    "field": "hasParent",
+                                    "equals": true
+                                }
+                            },
+                            {
+                                "name": "hasDisplay",
+                                "type": "boolean"
+                            },
+                            {
+                                "name": "title",
+                                "type": "string",
+                                "if": {
+                                    "field": "hasDisplay",
+                                    "equals": true
+                                }
+                            },
+                            {
+                                "name": "description",
+                                "type": "string",
+                                "if": {
+                                    "field": "hasDisplay",
+                                    "equals": true
+                                }
+                            },
+                            {
+                                "name": "icon",
+                                "type": "item",
+                                "if": {
+                                    "field": "hasDisplay",
+                                    "equals": true
+                                }
+                            },
+                            {
+                                "name": "frameType",
+                                "type": "varint",
+                                "if": {
+                                    "field": "hasDisplay",
+                                    "equals": true
+                                }
+                            },
+                            {
+                                "name": "flags",
+                                "type": "int",
+                                "if": {
+                                    "field": "hasDisplay",
+                                    "equals": true
+                                }
+                            },
+                            {
+                                "name": "backgroundTexture",
+                                "type": "string",
+                                "if": {
+                                    "field": "flags",
+                                    "bitmask": "0x01"
+                                }
+                            },
+                            {
+                                "name": "x",
+                                "type": "float",
+                                "if": {
+                                    "field": "hasDisplay",
+                                    "equals": true
+                                }
+                            },
+                            {
+                                "name": "y",
+                                "type": "float",
+                                "if": {
+                                    "field": "hasDisplay",
+                                    "equals": true
+                                }
+                            },
+                            {
+                                "name": "criteria",
+                                "type": "collection",
+                                "fields": [
+                                    {
+                                        "name": "criterion",
+                                        "type": "string"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "requirements",
+                                "type": "collection",
+                                "fields": [
+                                    {
+                                        "name": "requirement",
+                                        "type": "collection",
+                                        "fields": [
+                                            {
+                                                "name": "requirementId",
+                                                "type": "string"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "removed",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "type": "string"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "progressMap",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "type": "string"
+                            },
+                            {
+                                "name": "criteria",
+                                "type": "collection",
+                                "fields": [
+                                    {
+                                        "name": "criterion",
+                                        "type": "string"
+                                    },
+                                    {
+                                        "name": "achieved",
+                                        "type": "boolean"
+                                    },
+                                    {
+                                        "name": "achieveTime",
+                                        "type": "long",
+                                        "if": {
+                                            "field": "achieved",
+                                            "equals": true
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundUpdateAttributesPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "entityId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "properties",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "key",
+                                "type": "string"
+                            },
+                            {
+                                "name": "value",
+                                "type": "double"
+                            },
+                            {
+                                "name": "modifiers",
+                                "type": "collection",
+                                "fields": [
+                                    {
+                                        "name": "uuid",
+                                        "type": "uuid"
+                                    },
+                                    {
+                                        "name": "amount",
+                                        "type": "double"
+                                    },
+                                    {
+                                        "name": "operation",
+                                        "type": "byte"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundUpdateEnabledFeaturesPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "features",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "feature",
+                                "type": "string"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundUpdateMobEffectPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "entityId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "effectId",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "amplifier",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "duration",
+                        "type": "varint"
+                    },
+                    {
+                        "name": "flags",
+                        "type": "byte"
+                    },
+                    {
+                        "name": "hasFactorData",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "factorCodec",
+                        "type": "nbt",
+                        "if": {
+                            "field": "hasFactorData",
+                            "equals": true
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundUpdateRecipesPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "todo",
+                        "type": "bytes"
+                    }
+                ],
+                "fields_todo": [
+                    {
+                        "name": "recipes",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "type",
+                                "type": "string"
+                            },
+                            {
+                                "name": "recipeId",
+                                "type": "string"
+                            },
+                            {
+                                "name": "todo"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "ClientboundUpdateTagsPacket",
+                "to": "client",
+                "fields": [
+                    {
+                        "name": "tagTypes",
+                        "type": "collection",
+                        "fields": [
+                            {
+                                "name": "tagType",
+                                "type": "string"
+                            },
+                            {
+                                "name": "tags",
+                                "type": "collection",
+                                "fields": [
+                                    {
+                                        "name": "tagId",
+                                        "type": "string"
+                                    },
+                                    {
+                                        "name": "entries",
+                                        "type": "collection",
+                                        "fields": [
+                                            {
+                                                "name": "entryId",
+                                                "type": "varint"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
